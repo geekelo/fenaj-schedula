@@ -1,27 +1,27 @@
 // signup.js
 import React, { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchGreetings } from '../redux/greetingSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { createUser } from '../redux/signupSlice';
 
 const Signup = () => {
-  // const dispatch = useDispatch();
-  // const greeting = useSelector((state) => state.greetings.value);
+  const dispatch = useDispatch();
+  const message = useSelector((state) => state.signup_auths.user.registrationErrors);
 
-  // useEffect(() => {
-  //   dispatch(fetchGreetings());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(createUser());
+  }, [dispatch]);
+
 
   const [userInfo, setUserInfo] = useState({
     username: '',
     email: '',
     password: '',
-    password_confirmation: '',
-    registrationErrors: ''
-  });
+    password_confirmation: ''
+});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("userInfo.username");
+    dispatch(createUser(userInfo));
   }
 
   const handleChange = (e) => {
@@ -29,7 +29,7 @@ const Signup = () => {
 
     setUserInfo({
       ...userInfo,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
     console.log(userInfo);
   }
@@ -39,11 +39,14 @@ const Signup = () => {
   },[userInfo]);
 
 
+
   return (
     <div>
       <h2>Registration goes here</h2>
+      <p> {message} </p>
       <form onSubmit={handleSubmit}>
-        <input
+
+      <input
           type="text"
           name="username"
           placeholder="username"

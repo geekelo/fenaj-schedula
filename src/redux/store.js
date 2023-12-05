@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import signupSlice from './signupSlice';
 
 const store = configureStore({
   reducer: {
-    // greetings: greetingSlice,
+    signup_auths: signupSlice,
   },
 });
 

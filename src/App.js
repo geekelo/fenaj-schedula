@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,11 +9,16 @@ import {
 import Home from './components/home';
 
 function App() {
+  const [loggedInStatusInfo, setLoggedInStatusInfo] = useState({
+    loggedInStatus: "NOT_LOGGED_IN",
+    user: {}
+  })
+
   return (
     <div>
       <Router>
         <Routes>
-          <Route path="/home" exact element={<Home />} />
+          <Route path="/home" exact element={<Home loggedInStatusInfo={loggedInStatusInfo} />} />
         </Routes>
       </Router>
     </div>
