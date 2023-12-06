@@ -39,14 +39,14 @@ export const loginUser = createAsyncThunk(
       expirationTime,
     };
 
+    localStorage.setItem('userData', JSON.stringify(dataToStore));
+    // login
     const loginStatus = {
       login: true,
       expirationTime,
     };
 
-    localStorage.setItem('userData', JSON.stringify(dataToStore));
-    localStorage.setItem('userLoginStatus', JSON.stringify(loginStatus));
-
+localStorage.setItem('userData', JSON.stringify(loginStatus));
 
       console.log(data);
       return data;  // You might want to adjust this based on your API response structure
@@ -61,7 +61,35 @@ const loginSlice = createSlice({
   name: 'login_auths',
   initialState,
   reducers: {
-    checkLoginStatus: async (state) => {
+
+    checkLoginStatus: (state) => {
+
+      const key = 'userLoginStatus';
+  
+        const storedData = localStorage.getItem(key);
+        if (!storedData) {
+          return false;
+        }
+        const parsedData = JSON.parse(storedData);
+        const { login, expiration_time } = parsedData;
+    
+        
+        // Check if the data has expired
+        if (new Date().getTime() > expiration_time) {
+          localStorage.removeItem(key); // Clear expired data
+          return false;
+        }
+        
+        if (login) {
+          return {
+            ...state,
+          loggedin: true
+        }
+        }
+      },
+    
+
+    updateStatus: async(state) => {
       try {
         const response = await fetch('http://localhost:30001/sessions/logged_in', {
           method: 'GET',
@@ -78,6 +106,15 @@ const loginSlice = createSlice({
         const data = await response.json();
     
         if (data.logged_in) {
+
+          const expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; // 24 hours
+          const loginStatus = {
+            login: true,
+            expirationTime,
+          };
+
+    localStorage.setItem('userData', JSON.stringify(loginStatus));
+          
           return {
             ...state,
             value: data,
@@ -98,7 +135,6 @@ const loginSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
-        loggedin: true,
         value: action.payload,
         status: 'done'
       }))

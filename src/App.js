@@ -16,28 +16,32 @@ import { checkLoginStatus } from './redux/loginSlice';
 function App() {
   const dispatch = useDispatch();
 
-  const signupStatus = useSelector((state) => state.signup_auths.signedup) || 'not_created';
-  const loginStatus = useSelector((state) => state.login_auths.loggedin);
-
-  let currentStatus = signupStatus === true || loginStatus === false ? true : false;
+  let loginStatus = useSelector((state) => state.login_auths.loggedin) || 'empty';
+  let currentStatus = 'default';
   
   useEffect(() => {
-    // Call checkLoginStatus when the component mounts
-    dispatch(checkLoginStatus);
-  }, [dispatch]); 
-
-  const [loggedInStatusInfo, setLoggedInStatusInfo] = useState({
-    loggedInStatus: "NOT_LOGGED_IN",
-    user: {}
-  })
-
+    const fetchLoginStatus = async () => {
+      await dispatch(checkLoginStatus());
+    };
+  
+    if (loginStatus === 'empty') {
+      fetchLoginStatus();
+    }
+  }, [dispatch, loginStatus]);
+  
+  // Assuming checkLoginStatus updates the login status in the Redux store,
+  // you can listen for changes to loginStatus using another useEffect
   useEffect(() => {
-    setLoggedInStatusInfo((loggedInStatusInfo) => ({
-      ...loggedInStatusInfo,
-      loggedInStatus:
-      currentStatus === true ? 'LOGGED_IN' : 'NOT_LOGGED_IN',
-    }));
-  }, [currentStatus]);
+    // Check the updated login status and set the current status accordingly
+    if (loginStatus === true) {
+      currentStatus ='yes';
+    } else {
+      currentStatus = 'no';
+    }
+  }, [loginStatus]);
+
+  console.log(loginStatus);
+  if (loginStatus !== 'empty'){
 
 
   return (
@@ -60,21 +64,20 @@ function App() {
           </ul>
         </nav>
         <Routes>
-          <Route path="/" exact element={loggedInStatusInfo.loggedInStatus === 'LOGGED_IN' ? (
+          <Route path="/" exact element={loginStatus == true ? (
                 <Navigate to="/home" />
               ) : (
                 <Navigate to="/signup" />
               )} />
 
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home login = {loginStatus} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Routes>
         
       </Router>
-
     </div>
-  );
+  )};
 }
 
 export default App;
