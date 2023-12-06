@@ -6,6 +6,7 @@ import {
   Routes,
   Route,
   Navigate,
+  Link,
 } from 'react-router-dom';
 import Home from './components/home';
 import Signup from './auth/signup';
@@ -15,10 +16,10 @@ import { checkLoginStatus } from './redux/loginSlice';
 function App() {
   const dispatch = useDispatch();
 
-  const signupStatus = useSelector((state) => state.signup_auths.value.status) || 'not_created';
-  const loginStatus = useSelector((state) => state.login_auths.value.loggedin);
+  const signupStatus = useSelector((state) => state.signup_auths.signedup) || 'not_created';
+  const loginStatus = useSelector((state) => state.login_auths.loggedin);
 
-  let currentStatus = signupStatus === 'created' || loginStatus === false ? true : false;
+  let currentStatus = signupStatus === true || loginStatus === false ? true : false;
   
   useEffect(() => {
     // Call checkLoginStatus when the component mounts
@@ -42,6 +43,22 @@ function App() {
   return (
     <div>
       <Router>
+      <nav>
+          <ul>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/signup">Sign up</Link>
+            </li>
+            <li>
+              <Link to="/">Base</Link>
+            </li>
+          </ul>
+        </nav>
         <Routes>
           <Route path="/" exact element={loggedInStatusInfo.loggedInStatus === 'LOGGED_IN' ? (
                 <Navigate to="/home" />
@@ -55,6 +72,7 @@ function App() {
         </Routes>
         
       </Router>
+
     </div>
   );
 }

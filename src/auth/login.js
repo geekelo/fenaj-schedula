@@ -7,7 +7,7 @@ import { loginUser } from '../redux/loginSlice';
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.login_auths.value);
+  const message = useSelector((state) => state.login_auths.loggedin);
 
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -17,7 +17,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(userInfo));
-    message.logged_in === true ? navigate('/home') : navigate('/login');
+    message === true ? navigate('/home') : navigate('/login');
   }
 
   const handleChange = (e) => {

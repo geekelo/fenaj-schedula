@@ -26,6 +26,28 @@ export const loginUser = createAsyncThunk(
       }
 
       const data = await response.json();
+
+      const extractedUserData = {
+        id: data.user.id,
+        email: data.user.email
+      }
+
+    // Store the data along with a timestamp
+    const expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; // 24 hours
+    const dataToStore = {
+      extractedUserData,
+      expirationTime,
+    };
+
+    const loginStatus = {
+      login: true,
+      expirationTime,
+    };
+
+    localStorage.setItem('userData', JSON.stringify(dataToStore));
+    localStorage.setItem('userLoginStatus', JSON.stringify(loginStatus));
+
+
       console.log(data);
       return data;  // You might want to adjust this based on your API response structure
     } catch (error) {
@@ -76,11 +98,13 @@ const loginSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
+        loggedin: true,
         value: action.payload,
         status: 'done'
       }))
       .addCase(loginUser.rejected, (state, action) => ({
         ...state,
+        loggedin: false,
         status: 'failed',
         error: action.error.message,
       }));

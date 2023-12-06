@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: {},
+  signedup: false,
   status: 'idle',
   error: 'no errors yet'
 };
@@ -48,10 +49,12 @@ const signupSlice = createSlice({
         // Update the state with the received user data
         ...state,
         value: action.payload,
+        signedup: true,
         status: 'done'
       }))
       .addCase(createUser.rejected, (state, action) => ({
         ...state,
+        signedup: false,
         status: 'failed',
         error: action.error.message,
       }));
