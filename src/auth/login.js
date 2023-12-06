@@ -21,22 +21,14 @@ const Login = () => {
     console.log(message)
   };
 
-
   const handleChange = (e) => {
     e.preventDefault();
 
-    setUserInfo({
+    setUserInfo((userInfo) => ({
       ...userInfo,
       [e.target.name]: e.target.value
-    });
-    console.log(userInfo);
-  }
-
-  useEffect(() => {
-    console.log(userInfo);
-  },[userInfo]);
-
-
+    }));
+  };
 
   return (
     <div>

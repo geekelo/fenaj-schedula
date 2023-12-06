@@ -18,22 +18,15 @@ function App() {
   const loginStatus = useSelector((state) => state.login_auths.loggedin) || 'empty';
 
   useEffect(() => {
-    const fetchLoginStatus =  () => {
-      console.log('Fetching login status...');
-       dispatch(checkLoginStatus());
+    const fetchLoginStatus = () => {
+        dispatch(checkLoginStatus());
     };
 
     // Call fetchLoginStatus when the component mounts
     if (loginStatus === 'empty') {
       fetchLoginStatus();
-      console.log('Login status changed2:', loginStatus);
     }
   }, [dispatch, loginStatus]);
-
-  // The useEffect below listens for changes to loginStatus
-  useEffect(() => {
-    console.log('Login status changed:', loginStatus);
-  }, [loginStatus]);
 
   if (loginStatus !== 'empty') {
     return (
