@@ -1,15 +1,21 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { checkLoginStatus } from '../redux/loginSlice';
 
 
 function Home() {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    // Call checkLoginStatus when the component mounts
+    dispatch(checkLoginStatus());
+  }, [dispatch])
+  const signupStatus = useSelector((state) => state.signup_auths.signedup);
   const loginStatus = useSelector((state) => state.login_auths.loggedin);
 
   let currentStatus = signupStatus === true || loginStatus === true ? 'LOGGED_IN' : 'NOT_LOGGED_IN';
 
-  console.log(loginStatus)
-
+  
   return (
     <div>
       <p>Hello</p>

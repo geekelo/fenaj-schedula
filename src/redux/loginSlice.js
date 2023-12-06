@@ -68,7 +68,10 @@ const loginSlice = createSlice({
   
         const storedData = localStorage.getItem(key);
         if (!storedData) {
-          return false;
+          return {
+            ...state,
+            loggedin: false
+          }
         }
         const parsedData = JSON.parse(storedData);
         const { login, expiration_time } = parsedData;
@@ -77,14 +80,17 @@ const loginSlice = createSlice({
         // Check if the data has expired
         if (new Date().getTime() > expiration_time) {
           localStorage.removeItem(key); // Clear expired data
-          return false;
+          return {
+            ...state,
+            loggedin: false
+          }
         }
         
         if (login) {
           return {
             ...state,
           loggedin: true
-        }
+          }
         }
       },
     

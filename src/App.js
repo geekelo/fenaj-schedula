@@ -17,7 +17,6 @@ function App() {
   const dispatch = useDispatch();
 
   let loginStatus = useSelector((state) => state.login_auths.loggedin) || 'empty';
-  let currentStatus = 'default';
   
   useEffect(() => {
     const fetchLoginStatus = async () => {
@@ -31,19 +30,15 @@ function App() {
   
   // Assuming checkLoginStatus updates the login status in the Redux store,
   // you can listen for changes to loginStatus using another useEffect
-  useEffect(() => {
-    // Check the updated login status and set the current status accordingly
-    if (loginStatus === true) {
-      currentStatus ='yes';
-    } else {
-      currentStatus = 'no';
-    }
-  }, [loginStatus]);
 
   console.log(loginStatus);
+
+  const signout = ()=>{
+  //   localStorage.clear();
+  //   dispatch(checkLoginStatus());
+  }
+
   if (loginStatus !== 'empty'){
-
-
   return (
     <div>
       <Router>
@@ -59,7 +54,7 @@ function App() {
               <Link to="/signup">Sign up</Link>
             </li>
             <li>
-              <Link to="/">Base</Link>
+              <button onClick={signout}>Sign Out</button>
             </li>
           </ul>
         </nav>
