@@ -1,6 +1,6 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,9 +10,20 @@ import {
 import Home from './components/home';
 import Signup from './auth/signup';
 import Login from './auth/login';
+import { checkLoginStatus } from './redux/loginSlice';
 
 function App() {
-  const message = useSelector((state) => state.signup_auths.value);
+  const dispatch = useDispatch();
+
+  const signupStatus = useSelector((state) => state.signup_auths.value.status) || 'not_created';
+  const loginStatus = useSelector((state) => state.login_auths.value.loggedin);
+
+  let currentStatus = signupStatus === 'created' || loginStatus === false ? true : false;
+  
+  useEffect(() => {
+    // Call checkLoginStatus when the component mounts
+    dispatch(checkLoginStatus);
+  }, [dispatch]); 
 
   const [loggedInStatusInfo, setLoggedInStatusInfo] = useState({
     loggedInStatus: "NOT_LOGGED_IN",
@@ -23,9 +34,9 @@ function App() {
     setLoggedInStatusInfo((loggedInStatusInfo) => ({
       ...loggedInStatusInfo,
       loggedInStatus:
-        message.status === 'created' ? 'LOGGED_IN' : 'NOT_LOGGED_IN',
+      currentStatus === true ? 'LOGGED_IN' : 'NOT_LOGGED_IN',
     }));
-  }, [message.status]);
+  }, [currentStatus]);
 
 
   return (
@@ -39,8 +50,8 @@ function App() {
               )} />
 
           <Route path="/home" element={<Home />} />
-          <Route path="/signup" element={<Signup loggedInStatusInfo={loggedInStatusInfo} />} />
-          <Route path="/login" element={<Login loggedInStatusInfo={loggedInStatusInfo} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         
       </Router>

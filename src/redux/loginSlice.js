@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: {},
+  loggedin: false,
   status: 'idle',
   error: 'no errors yet'
 };
@@ -37,7 +38,35 @@ export const loginUser = createAsyncThunk(
 const loginSlice = createSlice({
   name: 'login_auths',
   initialState,
-  reducers: {},
+  reducers: {
+    checkLoginStatus: async (state) => {
+      try {
+        const response = await fetch('http://localhost:30001/sessions/logged_in', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+    
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+    
+        const data = await response.json();
+    
+        if (data.logged_in) {
+          return {
+            ...state,
+            value: data,
+            loggedin: true
+          };
+        }
+      } catch (error) {
+        console.error('Error checking login status:', error);
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => ({
@@ -58,4 +87,5 @@ const loginSlice = createSlice({
   },
 });
 
+export const { checkLoginStatus } = loginSlice.actions;
 export default loginSlice.reducer;
