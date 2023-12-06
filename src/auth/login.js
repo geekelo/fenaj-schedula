@@ -12,13 +12,15 @@ const Login = () => {
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
-});
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser(userInfo));
-    message === true ? navigate('/home') : navigate('/login');
-  }
+    await dispatch(loginUser(userInfo));
+    message === 'true' ? navigate('/home') : navigate('/login');
+    console.log(message)
+  };
+
 
   const handleChange = (e) => {
     e.preventDefault();

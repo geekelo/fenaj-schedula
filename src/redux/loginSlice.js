@@ -3,10 +3,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: {},
-  loggedin: false,
+  loggedin: 'false',
   status: 'idle',
   error: 'no errors yet'
 };
+
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
@@ -46,7 +47,7 @@ export const loginUser = createAsyncThunk(
       expirationTime,
     };
 
-localStorage.setItem('userData', JSON.stringify(loginStatus));
+localStorage.setItem('loginData', JSON.stringify(loginStatus));
 
       console.log(data);
       return data;  // You might want to adjust this based on your API response structure
@@ -63,36 +64,35 @@ const loginSlice = createSlice({
   reducers: {
 
     checkLoginStatus: (state) => {
-
-      const key = 'userLoginStatus';
-  
-        const storedData = localStorage.getItem(key);
-        if (!storedData) {
-          return {
-            ...state,
-            loggedin: false
-          }
-        }
+      const key = 'loginData';
+      const storedData = localStorage.getItem(key);
+      console.log(storedData)
+      if (localStorage.getItem(key) !== null) {
+              // Check if the data has expired
         const parsedData = JSON.parse(storedData);
-        const { login, expiration_time } = parsedData;
-    
-        
-        // Check if the data has expired
+        const expiration_time = parsedData.expirationTime;
         if (new Date().getTime() > expiration_time) {
           localStorage.removeItem(key); // Clear expired data
           return {
             ...state,
-            loggedin: false
-          }
+            loggedin: 'false'
+          };
         }
+        // The key 'userData' exists in local storage
         
-        if (login) {
-          return {
-            ...state,
-          loggedin: true
-          }
-        }
-      },
+        return {
+          ...state,
+          loggedin: 'true'
+        };
+      }
+
+      else {
+        return {
+          ...state,
+          loggedin: 'false'
+        };
+      }
+    },
     
 
     updateStatus: async(state) => {
@@ -136,17 +136,19 @@ const loginSlice = createSlice({
     builder
       .addCase(loginUser.pending, (state) => ({
         ...state,
+        loggedin: 'false',
         status: 'loading',
       }))
       .addCase(loginUser.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
+        loggedin: 'true',
         value: action.payload,
         status: 'done'
       }))
       .addCase(loginUser.rejected, (state, action) => ({
         ...state,
-        loggedin: false,
+        loggedin: 'false',
         status: 'failed',
         error: action.error.message,
       }));

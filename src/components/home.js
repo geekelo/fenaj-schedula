@@ -13,7 +13,7 @@ function Home() {
   const signupStatus = useSelector((state) => state.signup_auths.signedup);
   const loginStatus = useSelector((state) => state.login_auths.loggedin);
 
-  let currentStatus = signupStatus === true || loginStatus === true ? 'LOGGED_IN' : 'NOT_LOGGED_IN';
+  let currentStatus = signupStatus === true || loginStatus === 'true' ? 'LOGGED_IN' : 'NOT_LOGGED_IN';
 
   
   return (

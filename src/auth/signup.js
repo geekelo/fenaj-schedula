@@ -16,10 +16,11 @@ const Signup = () => {
     password_confirmation: ''
 });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createUser(userInfo));
+    await dispatch(createUser(userInfo));
     message.status === 'created' ? navigate('/home') : navigate('/signup');
+    console.log(message.status)
   }
 
   const handleChange = (e) => {
