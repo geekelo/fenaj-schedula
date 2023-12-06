@@ -5,7 +5,7 @@ const initialState = {
   value: {},
   signedup: false,
   status: 'idle',
-  error: 'no errors yet'
+  error: 'no errors yet',
 };
 
 export const createUser = createAsyncThunk(
@@ -17,7 +17,7 @@ export const createUser = createAsyncThunk(
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ user: userData }),  // Wrap userData in a "user" key
+        body: JSON.stringify({ user: userData }), // Wrap userData in a "user" key
         credentials: 'include',
       });
 
@@ -26,37 +26,33 @@ export const createUser = createAsyncThunk(
       }
 
       const data = await response.json();
-      console.log(data);
-
-      
       localStorage.clear();
       const extractedUserData = {
         id: data.user.id,
-        email: data.user.email
-      }
+        email: data.user.email,
+      };
 
-    // Store the data along with a timestamp
-    const expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; // 24 hours
-    const dataToStore = {
-      extractedUserData,
-      expirationTime,
-    };
+      // Store the data along with a timestamp
+      const expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; // 24 hours
+      const dataToStore = {
+        extractedUserData,
+        expirationTime,
+      };
 
-    localStorage.setItem('userData', JSON.stringify(dataToStore));
-    // login
-    const loginStatus = {
-      login: true,
-      expirationTime,
-    };
+      localStorage.setItem('userData', JSON.stringify(dataToStore));
+      // login
+      const loginStatus = {
+        login: true,
+        expirationTime,
+      };
 
-localStorage.setItem('loginData', JSON.stringify(loginStatus));
-      return data;  // You might want to adjust this based on your API response structure
+      localStorage.setItem('loginData', JSON.stringify(loginStatus));
+      return data; // You might want to adjust this based on your API response structure
     } catch (error) {
       throw new Error('Something went wrong with creating the user');
     }
   },
 );
-
 
 const signupSlice = createSlice({
   name: 'signup_auths',
@@ -73,7 +69,7 @@ const signupSlice = createSlice({
         ...state,
         value: action.payload,
         signedup: true,
-        status: 'done'
+        status: 'done',
       }))
       .addCase(createUser.rejected, (state, action) => ({
         ...state,

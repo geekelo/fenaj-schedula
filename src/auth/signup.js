@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../redux/signupSlice';
 
-const Signup = () => {
+function Signup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const message = useSelector((state) => state.signup_auths.value);
@@ -13,36 +13,39 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
-    password_confirmation: ''
-});
+    password_confirmation: '',
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(createUser(userInfo));
-    message.status === 'created' ? navigate('/home') : navigate('/signup');
-    console.log(message.status)
-  }
+    if (message.status === 'created') {
+      navigate('/home');
+    } else {
+      navigate('/signup');
+    }
+  };
 
   const handleChange = (e) => {
     e.preventDefault();
 
     setUserInfo({
       ...userInfo,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
     console.log(userInfo);
-  }
+  };
 
   useEffect(() => {
     console.log(userInfo);
-  },[userInfo]);
+  }, [userInfo]);
 
   return (
     <div>
       <h2>Registration goes here</h2>
       <form onSubmit={handleSubmit}>
 
-      <input
+        <input
           type="text"
           name="username"
           placeholder="username"
@@ -79,9 +82,8 @@ const Signup = () => {
         />
         <button type="submit">Sign Up</button>
       </form>
-      
     </div>
   );
-};
+}
 
 export default Signup;

@@ -5,9 +5,8 @@ const initialState = {
   value: {},
   loggedin: 'false',
   status: 'idle',
-  error: 'no errors yet'
+  error: 'no errors yet',
 };
-
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
@@ -18,7 +17,7 @@ export const loginUser = createAsyncThunk(
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ user: userData }),  // Wrap userData in a "user" key
+        body: JSON.stringify({ user: userData }), // Wrap userData in a "user" key
         credentials: 'include',
       });
 
@@ -30,33 +29,32 @@ export const loginUser = createAsyncThunk(
 
       const extractedUserData = {
         id: data.user.id,
-        email: data.user.email
-      }
+        email: data.user.email,
+      };
 
-    // Store the data along with a timestamp
-    const expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; // 24 hours
-    const dataToStore = {
-      extractedUserData,
-      expirationTime,
-    };
+      // Store the data along with a timestamp
+      const expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; // 24 hours
+      const dataToStore = {
+        extractedUserData,
+        expirationTime,
+      };
 
-    localStorage.setItem('userData', JSON.stringify(dataToStore));
-    // login
-    const loginStatus = {
-      login: true,
-      expirationTime,
-    };
+      localStorage.setItem('userData', JSON.stringify(dataToStore));
+      // login
+      const loginStatus = {
+        login: true,
+        expirationTime,
+      };
 
-localStorage.setItem('loginData', JSON.stringify(loginStatus));
+      localStorage.setItem('loginData', JSON.stringify(loginStatus));
 
       console.log(data);
-      return data;  // You might want to adjust this based on your API response structure
+      return data; // You might want to adjust this based on your API response structure
     } catch (error) {
       throw new Error('Something went wrong with creating the user');
     }
   },
 );
-
 
 const loginSlice = createSlice({
   name: 'login_auths',
@@ -66,70 +64,27 @@ const loginSlice = createSlice({
     checkLoginStatus: (state) => {
       const key = 'loginData';
       const storedData = localStorage.getItem(key);
-      console.log(storedData)
+      console.log(storedData);
       if (localStorage.getItem(key) !== null) {
-              // Check if the data has expired
+        // Check if the data has expired
         const parsedData = JSON.parse(storedData);
-        const expiration_time = parsedData.expirationTime;
-        if (new Date().getTime() > expiration_time) {
+        if (new Date().getTime() > parsedData.expirationTime) {
           localStorage.removeItem(key); // Clear expired data
           return {
             ...state,
-            loggedin: 'false'
+            loggedin: 'false',
           };
         }
         // The key 'userData' exists in local storage
-        
         return {
           ...state,
-          loggedin: 'true'
+          loggedin: 'true',
         };
       }
-
-      else {
-        return {
-          ...state,
-          loggedin: 'false'
-        };
-      }
-    },
-    
-
-    updateStatus: async(state) => {
-      try {
-        const response = await fetch('http://localhost:30001/sessions/logged_in', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        });
-    
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-    
-        const data = await response.json();
-    
-        if (data.logged_in) {
-
-          const expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; // 24 hours
-          const loginStatus = {
-            login: true,
-            expirationTime,
-          };
-
-    localStorage.setItem('userData', JSON.stringify(loginStatus));
-          
-          return {
-            ...state,
-            value: data,
-            loggedin: true
-          };
-        }
-      } catch (error) {
-        console.error('Error checking login status:', error);
-      }
+      return {
+        ...state,
+        loggedin: 'false',
+      };
     },
   },
   extraReducers: (builder) => {
@@ -144,7 +99,7 @@ const loginSlice = createSlice({
         ...state,
         loggedin: 'true',
         value: action.payload,
-        status: 'done'
+        status: 'done',
       }))
       .addCase(loginUser.rejected, (state, action) => ({
         ...state,
