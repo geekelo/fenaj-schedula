@@ -1,10 +1,10 @@
 // signup.js
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../redux/loginSlice';
 
-const Login = () => {
+function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const message = useSelector((state) => state.login_auths.loggedin);
@@ -17,16 +17,20 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(loginUser(userInfo));
-    message === 'true' ? navigate('/home') : navigate('/login');
-    console.log(message)
+    if (message === 'true') {
+      navigate('/home');
+    } else {
+      navigate('/login');
+    }
   };
+  // message === 'true' ? navigate('/home') : navigate('/login');
 
   const handleChange = (e) => {
     e.preventDefault();
 
     setUserInfo((userInfo) => ({
       ...userInfo,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -56,6 +60,6 @@ const Login = () => {
       </form>
     </div>
   );
-};
+}
 
 export default Login;

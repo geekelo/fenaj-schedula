@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     const fetchLoginStatus = () => {
-        dispatch(checkLoginStatus());
+      dispatch(checkLoginStatus());
     };
 
     // Call fetchLoginStatus when the component mounts
