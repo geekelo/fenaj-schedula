@@ -7,11 +7,11 @@ const initialState = {
   error: 'no errors yet'
 };
 
-export const createUser = createAsyncThunk(
-  'user/createUser',
+export const loginUser = createAsyncThunk(
+  'user/loginUser',
   async (userData) => {
     try {
-      const response = await fetch('http://localhost:30001/registrations', {
+      const response = await fetch('http://localhost:30001/sessions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,23 +34,23 @@ export const createUser = createAsyncThunk(
 );
 
 
-const signupSlice = createSlice({
-  name: 'signup_auths',
+const loginSlice = createSlice({
+  name: 'login_auths',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(createUser.pending, (state) => ({
+      .addCase(loginUser.pending, (state) => ({
         ...state,
         status: 'loading',
       }))
-      .addCase(createUser.fulfilled, (state, action) => ({
+      .addCase(loginUser.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
         value: action.payload,
         status: 'done'
       }))
-      .addCase(createUser.rejected, (state, action) => ({
+      .addCase(loginUser.rejected, (state, action) => ({
         ...state,
         status: 'failed',
         error: action.error.message,
@@ -58,4 +58,4 @@ const signupSlice = createSlice({
   },
 });
 
-export default signupSlice.reducer;
+export default loginSlice.reducer;

@@ -2,24 +2,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { createUser } from '../redux/signupSlice';
+import { loginUser } from '../redux/loginSlice';
 
-const Signup = () => {
+const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.signup_auths.value);
+  const message = useSelector((state) => state.login_auths.value);
 
   const [userInfo, setUserInfo] = useState({
-    username: '',
     email: '',
     password: '',
-    password_confirmation: ''
 });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createUser(userInfo));
-    message.status === 'created' ? navigate('/home') : navigate('/signup');
+    dispatch(loginUser(userInfo));
+    message.logged_in === true ? navigate('/home') : navigate('/login');
   }
 
   const handleChange = (e) => {
@@ -36,19 +34,12 @@ const Signup = () => {
     console.log(userInfo);
   },[userInfo]);
 
+
+
   return (
     <div>
-      <h2>Registration goes here</h2>
+      <h2>Login Page</h2>
       <form onSubmit={handleSubmit}>
-
-      <input
-          type="text"
-          name="username"
-          placeholder="username"
-          value={userInfo.username}
-          onChange={handleChange}
-          required
-        />
 
         <input
           type="email"
@@ -67,20 +58,10 @@ const Signup = () => {
           onChange={handleChange}
           required
         />
-
-        <input
-          type="password"
-          name="password_confirmation"
-          placeholder="confirm password"
-          value={userInfo.password_confirmation}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Sign Up</button>
+        <button type="submit">Log In</button>
       </form>
-      
     </div>
   );
 };
 
-export default Signup;
+export default Login;
