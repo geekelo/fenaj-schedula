@@ -12,6 +12,8 @@ import Signup from './auth/signup';
 import Login from './auth/login';
 import { checkLoginStatus } from './redux/loginSlice';
 import Navbar from './components/navbar';
+import SessionList from './components/Home1';
+import AddNew from './components/Add/AddNew';
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +52,8 @@ function App() {
             <Route path="/login" element={<Login message={loginStatus} />} />
           </Routes>
         </Router>
+        <SessionList />
+        <AddNew />
       </div>
     );
   }
