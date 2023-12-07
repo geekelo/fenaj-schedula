@@ -19,7 +19,7 @@ function Home() {
       <p>Hello</p>
       <p>
         STATUS:
-        { currentStatus }
+        {currentStatus}
       </p>
     </div>
   );
