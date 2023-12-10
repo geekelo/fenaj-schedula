@@ -1,26 +1,20 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkLoginStatus } from '../redux/loginSlice';
+import { displayItems } from '../redux/displayItemSlice';
+import EachItem from './eachitem';
 
 function Home() {
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.display_items.value);
 
   useEffect(() => {
     // Call checkLoginStatus when the component mounts
-    dispatch(checkLoginStatus());
+    dispatch(displayItems());
   }, [dispatch]);
-  const signupStatus = useSelector((state) => state.signup_auths.signedup);
-  const loginStatus = useSelector((state) => state.login_auths.loggedin);
-
-  const currentStatus = signupStatus === true || loginStatus === 'true' ? 'LOGGED_IN' : 'NOT_LOGGED_IN';
-
+  console.log(items);
   return (
     <div>
-      <p>Hello</p>
-      <p>
-        STATUS:
-        { currentStatus }
-      </p>
+      {items.map((each) => <EachItem key={each.id} eachitem={each} />)}
     </div>
   );
 }

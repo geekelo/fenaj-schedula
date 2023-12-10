@@ -1,14 +1,23 @@
 import React from 'react';
+import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
 function Navbar() {
   const navigate = useNavigate();
 
-  const signout = (e) => {
+  const signout = async (e) => {
     e.preventDefault();
-    // Clear local storage
-    localStorage.clear();
 
+    // Clear local storage
+    try {
+      const response = await axios.delete('http://localhost:30001/logout', { withCredentials: true });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log('Logout error', error);
+    }
+
+    localStorage.clear();
     // Navigate to the "/signup" route
     navigate('/signup');
   };
@@ -27,6 +36,9 @@ function Navbar() {
           </li>
           <li>
             <Link to="/signup">Sign up</Link>
+          </li>
+          <li>
+            <Link to="/additem">Add Item</Link>
           </li>
           <li>
             <button type="submit" onClick={signout}>Sign Out</button>
