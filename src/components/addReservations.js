@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addReservation } from '../redux/addResevationSlice';
 
 function AddReservations() {
@@ -9,7 +9,6 @@ function AddReservations() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const status = useSelector((state) => state.add_reservation.status);
   const [userLoggedin, setuserLoggedin] = useState(false);
 
   useEffect(() => {
@@ -64,13 +63,8 @@ function AddReservations() {
       reserveData: reserveInfo,
       token: parsedData.extractedUserData.token,
     }));
+    navigate('/home');
   };
-
-  useEffect(() => {
-    if (status === 'done') {
-      navigate('/home');
-    }
-  }, [status, navigate]);
 
   const handleChange = (e) => {
     setReserveInfo((prevItem) => ({
