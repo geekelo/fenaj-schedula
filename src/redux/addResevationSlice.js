@@ -1,4 +1,4 @@
-// addItemSlice.js
+// addReservationSlice.js
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -7,18 +7,18 @@ const initialState = {
   error: 'no errors yet',
 };
 
-export const addNewItem = createAsyncThunk(
-  'user/additem',
+export const addReservation = createAsyncThunk(
+  'user/addReservation',
   async (payload) => {
-    const { itemData, token } = payload;
+    const { reserveData, token } = payload;
     try {
-      const response = await fetch('http://localhost:30001/api/v1/items', {
+      const response = await fetch('http://localhost:30001/api/v1/reservations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ item: itemData }),
+        body: JSON.stringify({ reservation: reserveData }),
       });
 
       if (!response.ok) {
@@ -33,23 +33,23 @@ export const addNewItem = createAsyncThunk(
   },
 );
 
-const addItemSlice = createSlice({
-  name: 'add_new_item',
+const addReservationSlice = createSlice({
+  name: 'add_reservation',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(addNewItem.pending, (state) => ({
+      .addCase(addReservation.pending, (state) => ({
         ...state,
         status: 'loading',
       }))
-      .addCase(addNewItem.fulfilled, (state, action) => ({
+      .addCase(addReservation.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
         value: action.payload,
         status: 'done',
       }))
-      .addCase(addNewItem.rejected, (state, action) => ({
+      .addCase(addReservation.rejected, (state, action) => ({
         ...state,
         status: 'failed',
         error: action.error.message,
@@ -57,5 +57,4 @@ const addItemSlice = createSlice({
   },
 });
 
-export const { checkLoginStatus } = addItemSlice.actions;
-export default addItemSlice.reducer;
+export default addReservationSlice.reducer;

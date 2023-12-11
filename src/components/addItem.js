@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addNewItem } from '../redux/addItemSlice';
 
 function AddItem() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const status = useSelector((state) => state.add_new_item.status);
   const [userLoggedin, setuserLoggedin] = useState(false);
 
   useEffect(() => {
@@ -56,13 +57,18 @@ function AddItem() {
     }
   }, [userLoggedin]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const storedData = localStorage.getItem('userData');
     const parsedData = JSON.parse(storedData);
-    console.log(parsedData.extractedUserData.token);
-    dispatch(addNewItem({ itemData: item, token: parsedData.extractedUserData.token }));
+    await dispatch(addNewItem({ itemData: item, token: parsedData.extractedUserData.token }));
   };
+
+  useEffect(() => {
+    if (status === 'done') {
+      navigate('/home');
+    }
+  }, [status, navigate]);
 
   const handleChange = (e) => {
     setItem((prevItem) => ({

@@ -23,7 +23,7 @@ function ItemDetails() {
       <p>{ items[id].total_amount_payable }</p>
       <p>{ items[id].duration }</p>
       <p>{ items[id].image }</p>
-      <NavLink to={`/reserveitem/${items[id].id}`}><button type="submit">Reserve Session</button></NavLink>
+      <NavLink to={`/reserve-spa-session/${items[id].id}`}><button type="submit">Reserve Session</button></NavLink>
     </div>
   );
 }

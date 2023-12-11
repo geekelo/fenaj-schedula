@@ -1,19 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
-function EachItem({ eachitem }) {
+function DeleteEachItem({ eachitem, handleDelete }) {
+  const triggerHandleDelete = (e, reverseId) => {
+    e.preventDefault();
+    handleDelete(reverseId);
+  };
+
   return (
     <div>
       <p><img src={eachitem.image} alt="item" /></p>
       <p>{eachitem.name}</p>
       <p>{eachitem.description}</p>
-      <NavLink to={`/spa-session/${eachitem.id}`}><button type="submit">View Details</button></NavLink>
+      <button type="submit" onClick={(e) => triggerHandleDelete(e, eachitem.id)}>Delete</button>
     </div>
   );
 }
 
-EachItem.propTypes = {
+DeleteEachItem.propTypes = {
+  handleDelete: PropTypes.func.isRequired,
   eachitem: PropTypes.shape({
     id: PropTypes.number.isRequired, // Assuming id is a number, adjust if it's a different type
     name: PropTypes.string.isRequired,
@@ -23,4 +28,4 @@ EachItem.propTypes = {
   }).isRequired,
 };
 
-export default EachItem;
+export default DeleteEachItem;

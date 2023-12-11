@@ -14,6 +14,9 @@ import { checkLoginStatus } from './redux/loginSlice';
 import Navbar from './components/navbar';
 import AddItem from './components/addItem';
 import ItemDetails from './components/itemDetails';
+import AddReservations from './components/addReservations';
+import DisplayReservations from './components/displayReservations';
+import DeleteItems from './components/deleteItems';
 
 function App() {
   const dispatch = useDispatch();
@@ -67,8 +70,11 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/additem" element={<AddItem />} />
             <Route path="/login" element={<Login message={loginStatus} />} />
-            <Route path="/additem" element={<AddItem userData={userData} />} />
-            <Route path="/itemdetails/:id" element={<ItemDetails />} />
+            <Route path="/add-spa-session" element={<AddItem userData={userData} />} />
+            <Route path="/spa-session/:id" element={<ItemDetails />} />
+            <Route path="/reserve-spa-session/:id" element={<AddReservations />} />
+            <Route path="/my-reservations" element={<DisplayReservations />} />
+            <Route path="/delete-spa-sessions" element={<DeleteItems />} />
           </Routes>
         </Router>
       </div>

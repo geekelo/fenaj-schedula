@@ -38,7 +38,13 @@ function Navbar() {
             <Link to="/signup">Sign up</Link>
           </li>
           <li>
-            <Link to="/additem">Add Item</Link>
+            <Link to="/add-spa-session">Add Spa Session</Link>
+          </li>
+          <li>
+            <Link to="/my-reservations">My Reservations</Link>
+          </li>
+          <li>
+            <Link to="/delete-spa-sessions">Delete Spa Sessions</Link>
           </li>
           <li>
             <button type="submit" onClick={signout}>Sign Out</button>

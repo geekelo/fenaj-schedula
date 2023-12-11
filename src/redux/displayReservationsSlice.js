@@ -1,4 +1,4 @@
-// dislayItemSlice.js
+// dislayReservationsSlice.js
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -8,14 +8,15 @@ const initialState = {
   error: 'no errors yet',
 };
 
-export const displayItems = createAsyncThunk(
-  'user/display_items',
-  async () => {
+export const displayReservations = createAsyncThunk(
+  'user/display_reservations',
+  async (token) => {
     try {
-      const response = await fetch('http://localhost:30001/api/v1/items', {
+      const response = await fetch('http://localhost:30001/api/v1/reservations', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -31,13 +32,13 @@ export const displayItems = createAsyncThunk(
   },
 );
 
-export const deleteItem = createAsyncThunk(
+export const deleteReservation = createAsyncThunk(
   'items/deleteItem',
   async (payload, dispatch) => {
     const { id, token } = payload;
     console.log(payload);
     try {
-      const response = await fetch(`http://localhost:30001/api/v1/items/${id}`, {
+      const response = await fetch(`http://localhost:30001/api/v1/reservations/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -53,59 +54,32 @@ export const deleteItem = createAsyncThunk(
       // If the request is successful, you may dispatch another action to update the Redux store
       // with the new state after deletion
 
-      dispatch(displayItems()); // Return the deleted item ID if needed
+      dispatch(displayReservations(token)); // Return the deleted item ID if needed
     } catch (error) {
       throw new Error('Something went wrong with deleting the item');
     }
   },
 );
 
-const displayItemsSlice = createSlice({
-  name: 'display_items',
+const displayReservationsSlice = createSlice({
+  name: 'display_reservations',
   initialState,
-  reducers: {
-
-    checkLoginStatus: (state) => {
-      const key = 'loginData';
-      const storedData = localStorage.getItem(key);
-      console.log(storedData);
-      if (localStorage.getItem(key) !== null) {
-        // Check if the data has expired
-        const parsedData = JSON.parse(storedData);
-        if (new Date().getTime() > parsedData.expirationTime) {
-          localStorage.removeItem(key); // Clear expired data
-          return {
-            ...state,
-            loggedin: 'false',
-          };
-        }
-        // The key 'userData' exists in local storage
-        return {
-          ...state,
-          loggedin: 'true',
-        };
-      }
-      return {
-        ...state,
-        loggedin: 'false',
-      };
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(displayItems.pending, (state) => ({
+      .addCase(displayReservations.pending, (state) => ({
         ...state,
         loggedin: 'false',
         status: 'loading',
       }))
-      .addCase(displayItems.fulfilled, (state, action) => ({
+      .addCase(displayReservations.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
         loggedin: 'true',
         value: action.payload,
         status: 'done',
       }))
-      .addCase(displayItems.rejected, (state, action) => ({
+      .addCase(displayReservations.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
         status: 'failed',
@@ -114,5 +88,4 @@ const displayItemsSlice = createSlice({
   },
 });
 
-export const { checkLoginStatus } = displayItemsSlice.actions;
-export default displayItemsSlice.reducer;
+export default displayReservationsSlice.reducer;
