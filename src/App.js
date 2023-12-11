@@ -17,6 +17,7 @@ import ItemDetails from './components/itemDetails';
 import AddReservations from './components/addReservations';
 import DisplayReservations from './components/displayReservations';
 import DeleteItems from './components/deleteItems';
+import './stylesheets/App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -51,31 +52,35 @@ function App() {
 
   if (loginStatus !== 'empty') {
     return (
-      <div>
+      <div className="body">
         <Router>
-          <Navbar />
-          <Routes>
-            <Route
-              path="/"
-              exact
-              element={
-                loginStatus === 'true' ? (
-                  <Navigate to="/home" />
-                ) : (
-                  <Navigate to="/signup" />
-                )
-              }
-            />
-            <Route path="/home" element={<Home login={loginStatus} />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/additem" element={<AddItem />} />
-            <Route path="/login" element={<Login message={loginStatus} />} />
-            <Route path="/add-spa-session" element={<AddItem userData={userData} />} />
-            <Route path="/spa-session/:id" element={<ItemDetails />} />
-            <Route path="/reserve-spa-session/:id" element={<AddReservations />} />
-            <Route path="/my-reservations" element={<DisplayReservations />} />
-            <Route path="/delete-spa-sessions" element={<DeleteItems />} />
-          </Routes>
+          <div className="navSection">
+            <Navbar />
+          </div>
+          <div className="pageSection">
+            <Routes>
+              <Route
+                path="/"
+                exact
+                element={
+                  loginStatus === 'true' ? (
+                    <Navigate to="/home" />
+                  ) : (
+                    <Navigate to="/signup" />
+                  )
+                }
+              />
+              <Route path="/home" element={<Home login={loginStatus} />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/additem" element={<AddItem />} />
+              <Route path="/login" element={<Login message={loginStatus} />} />
+              <Route path="/add-spa-session" element={<AddItem userData={userData} />} />
+              <Route path="/spa-session/:id" element={<ItemDetails />} />
+              <Route path="/reserve-spa-session/:id" element={<AddReservations />} />
+              <Route path="/my-reservations" element={<DisplayReservations />} />
+              <Route path="/delete-spa-sessions" element={<DeleteItems />} />
+            </Routes>
+          </div>
         </Router>
       </div>
     );
