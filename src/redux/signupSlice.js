@@ -3,22 +3,20 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: {},
-  signedup: false,
   status: 'idle',
   error: 'no errors yet',
 };
 
-export const createUser = createAsyncThunk(
+export const loginUser = createAsyncThunk(
   'user/createUser',
-  async (userData) => {
+  async (loginData) => {
     try {
-      const response = await fetch('http://localhost:30001/registrations', {
+      const response = await fetch('http://localhost:30001/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ user: userData }), // Wrap userData in a "user" key
-        credentials: 'include',
+        body: JSON.stringify({ user: loginData }), // Wrap userData in a "user" key
       });
 
       if (!response.ok) {
@@ -26,10 +24,12 @@ export const createUser = createAsyncThunk(
       }
 
       const data = await response.json();
-      localStorage.clear();
+
       const extractedUserData = {
         id: data.user.id,
         email: data.user.email,
+        username: data.user.username,
+        token: data.token,
       };
 
       // Store the data along with a timestamp
@@ -40,13 +40,39 @@ export const createUser = createAsyncThunk(
       };
 
       localStorage.setItem('userData', JSON.stringify(dataToStore));
-      // login
-      const loginStatus = {
-        login: true,
-        expirationTime,
-      };
 
-      localStorage.setItem('loginData', JSON.stringify(loginStatus));
+      console.log(data);
+      return data; // You might want to adjust this based on your API response structure
+    } catch (error) {
+      throw new Error('Something went wrong with creating the user');
+    }
+  },
+);
+
+export const createUser = createAsyncThunk(
+  'user/createUser',
+  async (userData, { dispatch }) => {
+    try {
+      const response = await fetch('http://localhost:30001/api/v1/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: userData }), // Wrap userData in a "user" key
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      localStorage.clear();
+      console.log(data);
+      const loginData = {
+        email: userData.email,
+        password: userData.password,
+      };
+      dispatch(loginUser(loginData));
       return data; // You might want to adjust this based on your API response structure
     } catch (error) {
       throw new Error('Something went wrong with creating the user');
@@ -68,12 +94,10 @@ const signupSlice = createSlice({
         // Update the state with the received user data
         ...state,
         value: action.payload,
-        signedup: true,
         status: 'done',
       }))
       .addCase(createUser.rejected, (state, action) => ({
         ...state,
-        signedup: false,
         status: 'failed',
         error: action.error.message,
       }));

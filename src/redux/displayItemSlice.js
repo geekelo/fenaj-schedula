@@ -1,23 +1,22 @@
-// loginSlice.js
+// dislayItemSlice.js
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: {},
+  value: [],
   loggedin: 'empty',
   status: 'idle',
   error: 'no errors yet',
 };
 
-export const loginUser = createAsyncThunk(
-  'user/loginUser',
-  async (userData) => {
+export const displayItems = createAsyncThunk(
+  'user/display_items',
+  async () => {
     try {
-      const response = await fetch('http://localhost:30001/api/v1/login', {
-        method: 'POST',
+      const response = await fetch('http://localhost:30001/api/v1/items', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ user: userData }), // Wrap userData in a "user" key
       });
 
       if (!response.ok) {
@@ -25,39 +24,51 @@ export const loginUser = createAsyncThunk(
       }
 
       const data = await response.json();
-
-      const extractedUserData = {
-        id: data.user.id,
-        email: data.user.email,
-        username: data.user.username,
-        token: data.token,
-      };
-
-      // Store the data along with a timestamp
-      const expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; // 24 hours
-      const dataToStore = {
-        extractedUserData,
-        expirationTime,
-      };
-
-      localStorage.setItem('userData', JSON.stringify(dataToStore));
-
-      console.log(data);
-      return data; // You might want to adjust this based on your API response structure
+      return data;
     } catch (error) {
       throw new Error('Something went wrong with creating the user');
     }
   },
 );
 
-const loginSlice = createSlice({
-  name: 'login_auths',
+export const deleteItem = createAsyncThunk(
+  'items/deleteItem',
+  async (payload, dispatch) => {
+    const { id, token } = payload;
+    console.log(payload);
+    try {
+      const response = await fetch(`http://localhost:30001/api/v1/items/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          // Include any necessary headers, such as authentication headers
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // If the request is successful, you may dispatch another action to update the Redux store
+      // with the new state after deletion
+
+      dispatch(displayItems()); // Return the deleted item ID if needed
+    } catch (error) {
+      throw new Error('Something went wrong with deleting the item');
+    }
+  },
+);
+
+const displayItemsSlice = createSlice({
+  name: 'display_items',
   initialState,
   reducers: {
 
     checkLoginStatus: (state) => {
       const key = 'loginData';
       const storedData = localStorage.getItem(key);
+      console.log(storedData);
       if (localStorage.getItem(key) !== null) {
         // Check if the data has expired
         const parsedData = JSON.parse(storedData);
@@ -82,19 +93,19 @@ const loginSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state) => ({
+      .addCase(displayItems.pending, (state) => ({
         ...state,
         loggedin: 'false',
         status: 'loading',
       }))
-      .addCase(loginUser.fulfilled, (state, action) => ({
+      .addCase(displayItems.fulfilled, (state, action) => ({
         // Update the state with the received user data
         ...state,
         loggedin: 'true',
         value: action.payload,
         status: 'done',
       }))
-      .addCase(loginUser.rejected, (state, action) => ({
+      .addCase(displayItems.rejected, (state, action) => ({
         ...state,
         loggedin: 'false',
         status: 'failed',
@@ -103,5 +114,5 @@ const loginSlice = createSlice({
   },
 });
 
-export const { checkLoginStatus } = loginSlice.actions;
-export default loginSlice.reducer;
+export const { checkLoginStatus } = displayItemsSlice.actions;
+export default displayItemsSlice.reducer;

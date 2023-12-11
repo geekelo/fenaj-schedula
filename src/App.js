@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -12,10 +12,27 @@ import Signup from './auth/signup';
 import Login from './auth/login';
 import { checkLoginStatus } from './redux/loginSlice';
 import Navbar from './components/navbar';
+import AddItem from './components/addItem';
+import ItemDetails from './components/itemDetails';
+import AddReservations from './components/addReservations';
+import DisplayReservations from './components/displayReservations';
+import DeleteItems from './components/deleteItems';
 
 function App() {
   const dispatch = useDispatch();
-  const loginStatus = useSelector((state) => state.login_auths.loggedin) || 'empty';
+  const loginStatus = useSelector((state) => state.login_auths.loggedin);
+
+  const [userData, setUserData] = useState({});
+
+  const retrieveUserData = () => {
+    // Retrieve the content from localStorage
+    const userDataJSON = localStorage.getItem('userData');
+
+    // Parse the JSON content
+    const storedUserData = JSON.parse(userDataJSON);
+    console.log(storedUserData.extractedUserData);
+    return storedUserData.extractedUserData || {};
+  };
 
   useEffect(() => {
     const fetchLoginStatus = () => {
@@ -25,6 +42,10 @@ function App() {
     // Call fetchLoginStatus when the component mounts
     if (loginStatus === 'empty') {
       fetchLoginStatus();
+    }
+
+    if (loginStatus === 'true') {
+      setUserData(retrieveUserData());
     }
   }, [dispatch, loginStatus]);
 
@@ -47,7 +68,13 @@ function App() {
             />
             <Route path="/home" element={<Home login={loginStatus} />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/additem" element={<AddItem />} />
             <Route path="/login" element={<Login message={loginStatus} />} />
+            <Route path="/add-spa-session" element={<AddItem userData={userData} />} />
+            <Route path="/spa-session/:id" element={<ItemDetails />} />
+            <Route path="/reserve-spa-session/:id" element={<AddReservations />} />
+            <Route path="/my-reservations" element={<DisplayReservations />} />
+            <Route path="/delete-spa-sessions" element={<DeleteItems />} />
           </Routes>
         </Router>
       </div>

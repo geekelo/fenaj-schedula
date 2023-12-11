@@ -7,7 +7,7 @@ import { createUser } from '../redux/signupSlice';
 function Signup() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.signup_auths.value);
+  const message = useSelector((state) => state.signup_auths.status);
 
   const [userInfo, setUserInfo] = useState({
     username: '',
@@ -19,12 +19,17 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(createUser(userInfo));
-    if (message.status === 'created') {
-      navigate('/home');
-    } else {
-      navigate('/signup');
-    }
   };
+
+  useEffect(() => {
+    // Check the message in the effect
+    if (message === 'done') {
+      navigate('/home');
+    } else if (message === 'failed') {
+      // Handle failed registration, e.g., display an error message
+      console.error('Registration failed');
+    }
+  }, [message]);
 
   const handleChange = (e) => {
     e.preventDefault();
