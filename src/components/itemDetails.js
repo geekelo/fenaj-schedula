@@ -14,18 +14,22 @@ function ItemDetails() {
     dispatch(displayItems());
   }, [dispatch]);
 
-  return (
-    <div>
-      <p>{ items[id].name }</p>
-      <p>{ items[id].description }</p>
-      <p>{ items[id].spa_session_fee }</p>
-      <p>{ items[id].registration_fee }</p>
-      <p>{ items[id].total_amount_payable }</p>
-      <p>{ items[id].duration }</p>
-      <p>{ items[id].image }</p>
-      <NavLink to={`/reserve-spa-session/${items[id].id}`}><button type="submit">Reserve Session</button></NavLink>
-    </div>
-  );
+  if (items.length > 0) {
+    const item = items.find((item) => item.id === parseInt(id, 10));
+    console.log(item);
+    return (
+      <div>
+        <p>{ item.name }</p>
+        <p>{ item.description }</p>
+        <p>{ item.spa_session_fee }</p>
+        <p>{ item.registration_fee }</p>
+        <p>{ item.total_amount_payable }</p>
+        <p>{ item.duration }</p>
+        <p>{ item.image }</p>
+        <NavLink to={`/reserve-spa-session/${item.id}`}><button type="submit">Reserve Session</button></NavLink>
+      </div>
+    );
+  }
 }
 
 export default ItemDetails;

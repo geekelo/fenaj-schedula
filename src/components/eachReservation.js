@@ -7,7 +7,7 @@ import { displayItems } from '../redux/displayItemSlice';
 function EachReservation({ eachReservation, handleDelete }) {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.display_items.value);
-  console.log(items);
+
   useEffect(() => {
     // Call checkLoginStatus when the component mounts
     dispatch(displayItems());
@@ -18,17 +18,19 @@ function EachReservation({ eachReservation, handleDelete }) {
     handleDelete(reverseId);
   };
 
-  if (items) {
+  if (items.length > 0) {
+    const item = items.find((item) => item.id === parseInt(eachReservation.item_id, 10));
     return (
       <div>
         <p>{ eachReservation.id }</p>
         <p>{ eachReservation.city }</p>
         <p>{ eachReservation.date }</p>
-        <NavLink to={`/spa-session/${eachReservation.id}`}><p>{ items[eachReservation.id].name }</p></NavLink>
+        <NavLink to={`/spa-session/${eachReservation.id}`}><p>{ item.name }</p></NavLink>
         <button type="submit" onClick={(e) => triggerHandleDelete(e, eachReservation.id)}>Delete</button>
       </div>
     );
   }
+  return (<div>No reervations yet</div>);
 }
 
 EachReservation.propTypes = {
@@ -37,7 +39,7 @@ EachReservation.propTypes = {
     id: PropTypes.number.isRequired, // Assuming id is a number, adjust if it's a different type
     date: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    item_id: PropTypes.number.isRequired,
     // Add other properties as needed
   }).isRequired,
 };
