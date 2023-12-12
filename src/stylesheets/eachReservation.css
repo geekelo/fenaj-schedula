@@ -45,11 +45,26 @@
 }
 
 .reservation-delete {
-  text-align: right;
+  margin-left: 24.99%;
+  margin-top: 10px;
 }
 
 .desktop {
   display: none;
+}
+
+.reservation-id {
+  width: 16.66%;
+}
+
+.reservation-city {
+  margin-top: -18px;
+}
+
+.reservation-city,
+.reservation-name,
+.reservation-date {
+  margin-left: 24.99%;
 }
 
 .reservation-id::before {
@@ -95,5 +110,20 @@
   .reservation-date::before,
   .reservation-name::before {
     content: none;
+  }
+
+  .reservation-city {
+    margin-top: 0;
+  }
+
+  .reservation-city,
+  .reservation-name,
+  .reservation-date {
+    margin-left: 0;
+  }
+
+  .reservation-delete {
+    margin: 0;
+    text-align: right;
   }
 }
