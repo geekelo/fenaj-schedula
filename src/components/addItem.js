@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addNewItem } from '../redux/addItemSlice';
-import '../stylesheets/addItem.css';
+import '../stylesheets/form.css';
 
 function AddItem() {
   const navigate = useNavigate();
@@ -77,9 +77,9 @@ function AddItem() {
       <div>
         <form className="form">
           <fieldset className="fieldset">
-            <legend className="form-header">Add Session</legend>
+            <legend className="form-header">Add Spa Session</legend>
             <label htmlFor="name" className="form-label">
-              Name:
+              Name
               <input
                 className="form-input"
                 type="text"
@@ -93,7 +93,7 @@ function AddItem() {
             </label>
 
             <label htmlFor="description" className="form-label">
-              Description:
+              Description
               <textarea
                 value={item.description}
                 id="description"
@@ -162,7 +162,7 @@ function AddItem() {
             </label>
             <label htmlFor="image" className="form-label">
               {' '}
-              Item Image:
+              Item Image
               <input
                 className="form-input"
                 type="text"
@@ -173,7 +173,7 @@ function AddItem() {
                 required
               />
             </label>
-            <button type="submit" onClick={handleSubmit} className="form-btn">Add Item</button>
+            <button type="submit" onClick={handleSubmit} className="form-btn">Add Session</button>
           </fieldset>
         </form>
       </div>
