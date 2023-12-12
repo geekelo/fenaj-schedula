@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, NavLink } from 'react-router-dom';
 import { displayItems } from '../redux/displayItemSlice';
-import './detailsItem.css';
+import '../stylesheets/detailsItem.css';
 
 function ItemDetails() {
   const location = useLocation();
