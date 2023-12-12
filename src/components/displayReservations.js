@@ -65,7 +65,7 @@ function DisplayReservations() {
     return (
 
       <div className="reservation-main container-fluid">
-        <div className="container">
+        <div className="reservation-container">
           <h1>My Reservations</h1>
           <p>Here is a list of your reserved sessions:</p>
           <div className="row reservation-each desktop">

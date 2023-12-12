@@ -31,7 +31,7 @@ function EachReservation({ eachReservation, handleDelete }) {
       </div>
     );
   }
-  return (<div>No reervations yet</div>);
+  return (<div>No reservations yet</div>);
 }
 
 EachReservation.propTypes = {
