@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addNewItem } from '../redux/addItemSlice';
+import '../stylesheets/addItem.css';
 
 function AddItem() {
   const navigate = useNavigate();
@@ -74,11 +75,8 @@ function AddItem() {
   if (userLoggedin) {
     return (
       <div>
-        <p>Hello</p>
-        <p>
-          STATUS:
-        </p>
-        <h1>Add Item</h1>
+
+        <h1>Add Session</h1>
         <input
           type="text"
           name="name"
