@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { displayReservations, deleteReservation } from '../redux/displayReservationsSlice';
 import EachReservation from './eachReservation';
+import '../stylesheets/eachReservation.css';
 
 function DisplayReservations() {
   const navigate = useNavigate();
@@ -63,17 +64,28 @@ function DisplayReservations() {
       .filter((reservation) => reservation.user_id === parsedData.extractedUserData.id);
     return (
 
-      <div>
-        <p>My Reservations</p>
-        {
-          reservationList.map((each) => (
-            <EachReservation
-              key={each.id}
-              eachReservation={each}
-              handleDelete={handleDelete}
-            />
-          ))
-        }
+      <div className="reservation-main container-fluid">
+        <div className="reservation-container">
+          <h1>My Reservations</h1>
+          <p>Here is a list of your reserved sessions:</p>
+          <div className="row reservation-each desktop">
+            <div className="reservation-id col-lg-1">ID</div>
+            <div className="reservation-city col-lg-3">CITY</div>
+            <div className="reservation-date col-lg-2">DATE</div>
+            <div className="reservation-name col-lg-3">SESSION</div>
+            <div className="reservation-delete col-lg-3">ACTION</div>
+          </div>
+          {
+            reservationList.map((each, index) => (
+              <EachReservation
+                key={each.id}
+                eachReservation={each}
+                index={index}
+                handleDelete={handleDelete}
+              />
+            ))
+          }
+        </div>
       </div>
     );
   }
