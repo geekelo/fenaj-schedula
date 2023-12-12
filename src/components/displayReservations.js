@@ -6,6 +6,7 @@ import {
   deleteReservation,
 } from '../redux/displayReservationsSlice';
 import EachReservation from './eachReservation';
+import '../stylesheets/eachReservation.css';
 
 function DisplayReservations() {
   const navigate = useNavigate();
@@ -66,15 +67,21 @@ function DisplayReservations() {
       (reservation) => reservation.user_id === parsedData.extractedUserData.id,
     );
     return (
-      <div>
-        <p>My Reservations</p>
-        {reservationList.map((each) => (
-          <EachReservation
-            key={each.id}
-            eachReservation={each}
-            handleDelete={handleDelete}
-          />
-        ))}
+
+      <div className="reservation-main container-fluid">
+        <div className="container">
+          <h1>My Reservations</h1>
+          <p>Here is a list of your reserved sessions:</p>
+          {
+            reservationList.map((each) => (
+              <EachReservation
+                key={each.id}
+                eachReservation={each}
+                handleDelete={handleDelete}
+              />
+            ))
+          }
+        </div>
       </div>
     );
   }
