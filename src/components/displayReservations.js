@@ -76,10 +76,11 @@ function DisplayReservations() {
             <div className="reservation-delete col-lg-3">ACTION</div>
           </div>
           {
-            reservationList.map((each) => (
+            reservationList.map((each, index) => (
               <EachReservation
                 key={each.id}
                 eachReservation={each}
+                index={index}
                 handleDelete={handleDelete}
               />
             ))
