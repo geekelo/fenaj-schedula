@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { displayReservations, deleteReservation } from '../redux/displayReservationsSlice';
+import {
+  displayReservations,
+  deleteReservation,
+} from '../redux/displayReservationsSlice';
 import EachReservation from './eachReservation';
 
 function DisplayReservations() {
@@ -59,21 +62,19 @@ function DisplayReservations() {
   if (userLoggedin) {
     const storedData = localStorage.getItem('userData');
     const parsedData = JSON.parse(storedData);
-    const reservationList = reservations
-      .filter((reservation) => reservation.user_id === parsedData.extractedUserData.id);
+    const reservationList = reservations.filter(
+      (reservation) => reservation.user_id === parsedData.extractedUserData.id,
+    );
     return (
-
       <div>
         <p>My Reservations</p>
-        {
-          reservationList.map((each) => (
-            <EachReservation
-              key={each.id}
-              eachReservation={each}
-              handleDelete={handleDelete}
-            />
-          ))
-        }
+        {reservationList.map((each) => (
+          <EachReservation
+            key={each.id}
+            eachReservation={each}
+            handleDelete={handleDelete}
+          />
+        ))}
       </div>
     );
   }

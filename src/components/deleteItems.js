@@ -50,15 +50,13 @@ function DeleteItems() {
   if (userLoggedin) {
     return (
       <div>
-        {
-          items.map((each) => (
-            <DeleteEachItem
-              key={each.id}
-              eachitem={each}
-              handleDelete={handleDelete}
-            />
-          ))
-        }
+        {items.map((each) => (
+          <DeleteEachItem
+            key={each.id}
+            eachitem={each}
+            handleDelete={handleDelete}
+          />
+        ))}
       </div>
     );
   }

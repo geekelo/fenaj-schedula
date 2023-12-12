@@ -5,10 +5,14 @@ import { NavLink } from 'react-router-dom';
 function EachItem({ eachitem }) {
   return (
     <div>
-      <p><img src={eachitem.image} alt="item" /></p>
+      <p>
+        <img src={eachitem.image} alt="item" />
+      </p>
       <p>{eachitem.name}</p>
       <p>{eachitem.description}</p>
-      <NavLink to={`/spa-session/${eachitem.id}`}><button type="submit">View Details</button></NavLink>
+      <NavLink to={`/spa-session/${eachitem.id}`}>
+        <button type="submit">View Details</button>
+      </NavLink>
     </div>
   );
 }
