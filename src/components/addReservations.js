@@ -107,7 +107,7 @@ function AddReservations() {
                 id="date"
               />
             </label>
-            <button type="submit" className='form-btn'>Done</button>
+            <button type="submit" className="form-btn">Done</button>
           </fieldset>
 
         </form>
