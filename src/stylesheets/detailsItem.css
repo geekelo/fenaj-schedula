@@ -63,9 +63,11 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
 .reserve-button a{
   margin: 10px 40px;
 }
+
 .reserve-button a,
 .back-button a {
   padding: 10px 20px;
@@ -76,6 +78,7 @@
   background-color: #97bf0f;
   box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
 }
+
 .back-button a{
   margin-left: 90px;
 }
@@ -163,6 +166,7 @@
     margin: 10px 60px;
     border-radius: 30px;
   }
+  
   .back-button a {
     margin-left: 120px;
     border-top-right-radius: 70px;
