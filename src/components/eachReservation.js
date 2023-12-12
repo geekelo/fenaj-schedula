@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { displayItems } from '../redux/displayItemSlice';
+import '../stylesheets/eachReservation.css';
 
 function EachReservation({ eachReservation, handleDelete }) {
   const dispatch = useDispatch();
@@ -21,12 +22,12 @@ function EachReservation({ eachReservation, handleDelete }) {
   if (items.length > 0) {
     const item = items.find((item) => item.id === parseInt(eachReservation.item_id, 10));
     return (
-      <div>
-        <p>{ eachReservation.id }</p>
-        <p>{ eachReservation.city }</p>
-        <p>{ eachReservation.date }</p>
-        <NavLink to={`/spa-session/${eachReservation.id}`}><p>{ item.name }</p></NavLink>
-        <button type="submit" onClick={(e) => triggerHandleDelete(e, eachReservation.id)}>Delete</button>
+      <div className="row reservation-each">
+        <div className="reservation-id col-lg-1">{ eachReservation.id }</div>
+        <div className="reservation-city col-lg-3">{ eachReservation.city }</div>
+        <div className="reservation-date col-lg-2">{ eachReservation.date }</div>
+        <div className="reservation-name col-lg-3"><NavLink to={`/spa-session/${eachReservation.id}`}>{ item.name }</NavLink></div>
+        <div className="reservation-delete col-lg-3"><button type="submit" className="reservation-btn" onClick={(e) => triggerHandleDelete(e, eachReservation.id)}>Delete</button></div>
       </div>
     );
   }

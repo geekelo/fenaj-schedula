@@ -1,0 +1,70 @@
+/* @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');*/
+
+* {
+  box-sizing: border-box;
+}
+
+.reservation-main {
+  background-color: #96bf01;
+  padding: 30px;
+  color: #fff;
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+.reservation-main h1 {
+  margin: 0 auto;
+  padding: 20px 0;
+  width: 50%;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 1px solid #accd40;
+}
+
+.reservation-main p {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.reservation-each {
+  padding: 15px;
+  border-bottom: 1px solid #accd40;
+}
+
+.reservation-btn {
+  background-color: #fff;
+  color: #96bf01;
+  border-radius: 25px;
+  border: none;
+  padding: 10px 20px;
+}
+
+.reservation-name a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.reservation-delete {
+  text-align: right;
+}
+
+@media (min-width: 992px){
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+	.row .col-lg-1 {
+    width: 8.33%
+  }
+
+  .row .col-lg-2 {
+    width: 16.66%
+  }
+
+  .row .col-lg-3 {
+    width: 24.99%
+  }
+}
+
