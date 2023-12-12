@@ -68,6 +68,13 @@ function DisplayReservations() {
         <div className="container">
           <h1>My Reservations</h1>
           <p>Here is a list of your reserved sessions:</p>
+          <div className="row reservation-each desktop">
+            <div className="reservation-id col-lg-1">ID</div>
+            <div className="reservation-city col-lg-3">CITY</div>
+            <div className="reservation-date col-lg-2">DATE</div>
+            <div className="reservation-name col-lg-3">SESSION</div>
+            <div className="reservation-delete col-lg-3">ACTION</div>
+          </div>
           {
             reservationList.map((each) => (
               <EachReservation

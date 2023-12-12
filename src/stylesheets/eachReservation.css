@@ -48,6 +48,26 @@
   text-align: right;
 }
 
+.desktop {
+  display: none;
+}
+
+.reservation-id::before {
+  content: 'ID: ';
+}
+
+.reservation-city::before {
+  content: 'City: ';
+}
+
+.reservation-date::before {
+  content: 'Date: ';
+}
+
+.reservation-name::before {
+  content: 'Session: ';
+}
+
 @media (min-width: 992px) {
   .row {
     display: flex;
@@ -64,5 +84,16 @@
 
   .row .col-lg-3 {
     width: 24.99%;
+  }
+
+  .desktop {
+    display: flex;
+  }
+
+  .reservation-id::before,
+  .reservation-city::before,
+  .reservation-date::before,
+  .reservation-name::before {
+    content: none;
   }
 }
