@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, NavLink } from 'react-router-dom';
 import { displayItems } from '../redux/displayItemSlice';
+import './detailsItem.css';
 
 function ItemDetails() {
   const location = useLocation();
@@ -16,18 +17,78 @@ function ItemDetails() {
 
   if (items.length > 0) {
     const item = items.find((item) => item.id === parseInt(id, 10));
-    console.log(item);
     return (
-      <div>
-        <p>{ item.name }</p>
-        <p>{ item.description }</p>
-        <p>{ item.spa_session_fee }</p>
-        <p>{ item.registration_fee }</p>
-        <p>{ item.total_amount_payable }</p>
-        <p>{ item.duration }</p>
-        <p><img src={item.image} alt="spa_session" /></p>
-        <NavLink to={`/reserve-spa-session/${item.id}`}><button type="submit">Reserve Session</button></NavLink>
-      </div>
+      <>
+        <div className="container">
+          <div className="content-container">
+            <div className="image-container">
+              <div className="image">
+                <img src={item.image} alt="spa_session" />
+              </div>
+            </div>
+            <div className="text-container">
+              <div>
+                <h1>{item.name}</h1>
+                <p>
+                  - $
+                  {item.deposit}
+                  {' '}
+                  deposit upon any purchase
+                </p>
+              </div>
+              <ul>
+                <li className="list-item">
+                  <span>Registration fee</span>
+                  <span>
+                    $
+                    {item.registration_fee}
+                  </span>
+                </li>
+                <li className="list-item">
+                  <span>spa_session fee</span>
+                  <span>
+                    $
+                    {item.spa_session_fee}
+                  </span>
+                </li>
+                <li className="list-item">
+                  <span>Total amount of payable</span>
+                  <span>
+                    $
+                    {item.total_amount_payable}
+                  </span>
+                </li>
+                <li className="list-item">
+                  <span>Duration</span>
+                  <span>
+                    {item.duration}
+                    Months
+                  </span>
+                </li>
+              </ul>
+              <div className="apr-text">
+                <span>
+                  <span className="font-extrabold">5.9% APR</span>
+                  {' '}
+                  Representative
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div className="button-container">
+          <div className="reserve-button">
+            <NavLink to={`/reserve-spa-session/${item.id}`}>
+              Reserve Session
+            </NavLink>
+          </div>
+          <div className="back-button">
+            <NavLink to="/home">Back</NavLink>
+          </div>
+        </div>
+
+      </>
     );
   }
 }
