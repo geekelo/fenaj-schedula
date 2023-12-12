@@ -9,10 +9,17 @@ function DeleteEachItem({ eachitem, handleDelete }) {
 
   return (
     <div>
-      <p><img src={eachitem.image} alt="item" /></p>
+      <p>
+        <img src={eachitem.image} alt="item" />
+      </p>
       <p>{eachitem.name}</p>
       <p>{eachitem.description}</p>
-      <button type="submit" onClick={(e) => triggerHandleDelete(e, eachitem.id)}>Delete</button>
+      <button
+        type="submit"
+        onClick={(e) => triggerHandleDelete(e, eachitem.id)}
+      >
+        Delete
+      </button>
     </div>
   );
 }
