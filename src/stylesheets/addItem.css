@@ -1,0 +1,24 @@
+.form {
+    margin: 5rem auto;
+    width: 450px;
+    /* Form outline */
+    padding: 1em;
+    border: 1px solid #97BF10;
+    border-radius: 1em;
+}
+
+.fieldset {
+    padding: 1rem;
+    border: 1px solid #97BF10;
+}
+
+.form-header {
+    font-size: 2rem;
+    color: #97BF10;
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
