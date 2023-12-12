@@ -76,27 +76,40 @@ function AddReservations() {
   if (userLoggedin) {
     return (
       <div>
-        <h2>Reserve Spa Session</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form">
+          <fieldset className="fieldset">
+            <legend className="form-header">Reserve Spa Session</legend>
+            <label htmlFor="city" className="form-label">
+              {' '}
+              City
+              <input
+                className="form-input"
+                type="text"
+                name="city"
+                placeholder="city"
+                value={reserveInfo.city}
+                onChange={handleChange}
+                required
+                id="city"
+              />
+            </label>
+            <label htmlFor="date" className="form-label">
+              {' '}
+              Date
+              <input
+                className="form-input"
+                type="date"
+                name="date"
+                placeholder="date"
+                value={reserveInfo.password}
+                onChange={handleChange}
+                required
+                id="date"
+              />
+            </label>
+            <button type="submit">Done</button>
+          </fieldset>
 
-          <input
-            type="text"
-            name="city"
-            placeholder="city"
-            value={reserveInfo.city}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="date"
-            name="date"
-            placeholder="date"
-            value={reserveInfo.password}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">Done</button>
         </form>
       </div>
     );
