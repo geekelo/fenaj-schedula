@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../redux/signupSlice';
+import '../stylesheets/form.css';
 
 function Signup() {
   const navigate = useNavigate();
@@ -47,45 +48,67 @@ function Signup() {
 
   return (
     <div>
-      <h2>Registration goes here</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
+        <fieldset className="fieldset">
+          <legend className="form-header">Sign Up</legend>
+          <label htmlFor="username" className="form-label">
+            {' '}
+            Name
+            <input
+              className="form-input"
+              type="text"
+              name="username"
+              placeholder="username"
+              value={userInfo.username}
+              onChange={handleChange}
+              required
+              id="username"
+            />
+          </label>
+          <label htmlFor="email" className="form-label">
+            {' '}
+            Email
+            <input
+              className="form-input"
+              type="email"
+              name="email"
+              placeholder="email"
+              value={userInfo.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
 
-        <input
-          type="text"
-          name="username"
-          placeholder="username"
-          value={userInfo.username}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          value={userInfo.email}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={userInfo.password}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="password"
-          name="password_confirmation"
-          placeholder="confirm password"
-          value={userInfo.password_confirmation}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Sign Up</button>
+          <label htmlFor="password" className="form-label">
+            {' '}
+            Password
+            <input
+              className="form-input"
+              type="password"
+              name="password"
+              placeholder="password"
+              value={userInfo.password}
+              onChange={handleChange}
+              required
+              id="password"
+            />
+          </label>
+          <label htmlFor="c-password" className="form-label">
+            {' '}
+            Password Confirmation
+            <input
+              className="form-input"
+              type="password"
+              name="password_confirmation"
+              placeholder="confirm password"
+              value={userInfo.password_confirmation}
+              onChange={handleChange}
+              required
+              id="c-password"
+            />
+          </label>
+          <button type="submit" className="form-btn">Sign Up</button>
+        </fieldset>
       </form>
     </div>
   );

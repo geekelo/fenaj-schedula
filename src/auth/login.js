@@ -36,32 +36,42 @@ function Login() {
 
   return (
     <div>
-      <h2>Login Page</h2>
-      <form onSubmit={handleSubmit}>
-
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          value={userInfo.email}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={userInfo.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Log In</button>
+      <form onSubmit={handleSubmit} className="form">
+        <fieldset className="fieldset">
+          <legend className="form-header">Login Page</legend>
+          <label htmlFor="email" className="form-label">
+            Email
+            <input
+              className="form-input"
+              type="email"
+              name="email"
+              placeholder="email"
+              value={userInfo.email}
+              onChange={handleChange}
+              required
+              id="email"
+            />
+          </label>
+          <label htmlFor="city" className="form-label">
+            Password
+            <input
+              className="form-input"
+              type="password"
+              name="password"
+              placeholder="password"
+              value={userInfo.password}
+              onChange={handleChange}
+              required
+              id="password"
+            />
+          </label>
+          <button type="submit" className="form-btn">Log In</button>
+          <div>
+            <span>Don&apos;t have an account? </span>
+            <NavLink to="/signup" activeClassName="active">Sign up</NavLink>
+          </div>
+        </fieldset>
       </form>
-      <div>
-        <span>Don&apos;t have an account? </span>
-        <NavLink to="/signup" activeClassName="active">Sign up</NavLink>
-      </div>
     </div>
   );
 }
