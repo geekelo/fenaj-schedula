@@ -73,19 +73,18 @@ function ItemDetails() {
                   Representative
                 </span>
               </div>
+              <div className="reserve-button">
+                <NavLink to={`/reserve-spa-session/${item.id}`}>
+                  Reserve Session
+                </NavLink>
+              </div>
 
             </div>
           </div>
         </div>
-        <div className="button-container">
-          <div className="reserve-button">
-            <NavLink to={`/reserve-spa-session/${item.id}`}>
-              Reserve Session
-            </NavLink>
-          </div>
-          <div className="back-button">
-            <NavLink to="/home">Back</NavLink>
-          </div>
+
+        <div className="back-button">
+          <NavLink to="/home">Back</NavLink>
         </div>
 
       </>
