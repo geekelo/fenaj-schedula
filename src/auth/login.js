@@ -1,7 +1,7 @@
 // signup.js
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { loginUser } from '../redux/loginSlice';
 
 function Login() {
@@ -17,15 +17,12 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(loginUser(userInfo));
-  };
-
-  useEffect(() => {
     if (message === 'true') {
       navigate('/home');
     } else {
       navigate('/login');
     }
-  }, [message, navigate]);
+  };
   // message === 'true' ? navigate('/home') : navigate('/login');
 
   const handleChange = (e) => {
@@ -61,6 +58,10 @@ function Login() {
         />
         <button type="submit">Log In</button>
       </form>
+      <div>
+        <span>Don&apos;t have an account? </span>
+        <NavLink to="/signup" activeClassName="active">Sign up</NavLink>
+      </div>
     </div>
   );
 }

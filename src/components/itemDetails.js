@@ -25,7 +25,7 @@ function ItemDetails() {
         <p>{ item.registration_fee }</p>
         <p>{ item.total_amount_payable }</p>
         <p>{ item.duration }</p>
-        <p>{ item.image }</p>
+        <p><img src={item.image} alt="spa_session" /></p>
         <NavLink to={`/reserve-spa-session/${item.id}`}><button type="submit">Reserve Session</button></NavLink>
       </div>
     );

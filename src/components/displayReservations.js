@@ -36,8 +36,10 @@ function DisplayReservations() {
       const storedData = localStorage.getItem('userData');
       const parsedData = JSON.parse(storedData);
       // Call checkLoginStatus when the component mounts
-      console.log(parsedData.extractedUserData.token);
-      dispatch(displayReservations(parsedData.extractedUserData.token));
+      if (parsedData) {
+        console.log(parsedData.extractedUserData.token);
+        dispatch(displayReservations(parsedData.extractedUserData.token));
+      }
     }
   }, [userLoggedin, reservations]);
 
@@ -47,18 +49,24 @@ function DisplayReservations() {
       const storedData = localStorage.getItem('userData');
       const parsedData = JSON.parse(storedData);
       // Call checkLoginStatus when the component mounts
-      const { token } = parsedData.extractedUserData;
-      dispatch(deleteReservation({ id, token }));
+      if (parsedData) {
+        const { token } = parsedData.extractedUserData || 'undefined';
+        dispatch(deleteReservation({ id, token }));
+      }
     }
   };
 
   if (userLoggedin) {
-    console.log(reservations);
+    const storedData = localStorage.getItem('userData');
+    const parsedData = JSON.parse(storedData);
+    const reservationList = reservations
+      .filter((reservation) => reservation.user_id === parsedData.extractedUserData.id);
     return (
+
       <div>
         <p>My Reservations</p>
         {
-          reservations.map((each) => (
+          reservationList.map((each) => (
             <EachReservation
               key={each.id}
               eachReservation={each}
