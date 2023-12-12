@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  width: 20%;
+  text-align: center;
+  padding-bottom: 5vh;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  color: #424242;
+}
+
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  color: #424242;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logoImage {
+  display: block;
+  width: 150px;
+  margin: 2vh auto;
+}
+
+.menuItems {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  height: 5vh;
+  width: 100%;
+}
+
+.menuLinks {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: #424242;
+  padding: 0.5rem;
+  width: 60%;
+  border: none;
+  background-color: #fff;
+}
+
+.iconsSection {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.menuLinks:hover {
+  background-color: #424242;
+  color: #fff;
+}
+
+.active {
+  background-color: #97bf0f;
+  color: #fff;
+}
