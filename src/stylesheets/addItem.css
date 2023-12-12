@@ -5,11 +5,14 @@
     padding: 1em;
     border: 1px solid #97BF10;
     border-radius: 1em;
+    font-family: 'Lato', sans-serif;
 }
 
 .fieldset {
     padding: 1rem;
     border: 1px solid #97BF10;
+     background-color:#faf9f9;
+     border-radius: 0.5rem;
 }
 
 .form-header {
@@ -21,4 +24,27 @@
     display: flex;
     flex-direction: column;
     width: 80%;
+    margin-bottom: 0.5rem;
+}
+
+.form-input, .form-textarea {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin-top: 0.5rem;
+}
+
+.form-textarea {
+    height: 5rem;
+}
+
+.form-btn {
+    background-color: #97BF10;
+    padding: 0.8rem  2rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-weight:  700;
+    margin-top: 1rem;
 }

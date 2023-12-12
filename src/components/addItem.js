@@ -100,6 +100,7 @@ function AddItem() {
                 name="description"
                 onChange={handleChange}
                 placeholder="Your description here..."
+                className="form-textarea"
               />
             </label>
             <label htmlFor="duration" className="form-label">
@@ -161,7 +162,7 @@ function AddItem() {
             </label>
             <label htmlFor="image" className="form-label">
               {' '}
-              Image:
+              Item Image:
               <input
                 className="form-input"
                 type="text"
@@ -172,7 +173,7 @@ function AddItem() {
                 required
               />
             </label>
-            <button type="submit" onClick={handleSubmit}>Add Item</button>
+            <button type="submit" onClick={handleSubmit} className="form-btn">Add Item</button>
           </fieldset>
         </form>
       </div>
