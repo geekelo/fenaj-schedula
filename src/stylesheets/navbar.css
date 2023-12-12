@@ -12,6 +12,7 @@
   padding-bottom: 5vh;
   font-family: 'Lato', sans-serif;
   font-weight: 600;
+  color: #424242;
 }
 
 .menuContainer {
@@ -58,6 +59,7 @@
   background-color: #424242;
   color: #fff;
 }
+
 .active {
   background-color: #97bf0f;
   color: #fff;
