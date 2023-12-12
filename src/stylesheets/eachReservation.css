@@ -53,8 +53,8 @@
     display: flex;
     flex-wrap: wrap;
   }
-
-	.row .col-lg-1 {
+  
+  .row .col-lg-1 {
     width: 8.33%;
   }
 
