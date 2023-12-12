@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addNewItem } from '../redux/addItemSlice';
+import '../stylesheets/form.css';
 
 function AddItem() {
   const navigate = useNavigate();
@@ -74,76 +75,107 @@ function AddItem() {
   if (userLoggedin) {
     return (
       <div>
-        <p>Hello</p>
-        <p>
-          STATUS:
-        </p>
-        <h1>Add Item</h1>
-        <input
-          type="text"
-          name="name"
-          placeholder="name"
-          value={item.name}
-          onChange={handleChange}
-          required
-        />
+        <form className="form">
+          <fieldset className="fieldset">
+            <legend className="form-header">Add Spa Session</legend>
+            <label htmlFor="name" className="form-label">
+              Name
+              <input
+                className="form-input"
+                type="text"
+                name="name"
+                placeholder="name"
+                value={item.name}
+                onChange={handleChange}
+                id="name"
+                required
+              />
+            </label>
 
-        <label htmlFor="item-name">
-          Your Text:
-          <textarea
-            value={item.description}
-            id="item-name"
-            name="description"
-            onChange={handleChange}
-          />
-        </label>
+            <label htmlFor="description" className="form-label">
+              Description
+              <textarea
+                value={item.description}
+                id="description"
+                name="description"
+                onChange={handleChange}
+                placeholder="Your description here..."
+                className="form-textarea"
+              />
+            </label>
+            <label htmlFor="duration" className="form-label">
+              {' '}
+              Duration
+              <input
+                className="form-input"
+                type="number"
+                name="duration"
+                placeholder="duration"
+                value={item.duration}
+                onChange={handleChange}
+                id="duration"
+                required
+              />
+            </label>
+            <label htmlFor="spa_session_fee" className="form-label">
+              {' '}
+              Spa Session Fee
+              <input
+                className="form-input"
+                type="number"
+                name="spa_session_fee"
+                placeholder="spa session fee"
+                value={item.spa_session_fee}
+                onChange={handleChange}
+                id="spa_session_fee"
+                required
+              />
+            </label>
+            <label htmlFor="registration_fee" className="form-label">
+              {' '}
+              Registration Fee
+              <input
+                className="form-input"
+                type="number"
+                name="registration_fee"
+                placeholder="registration fee"
+                value={item.registration_fee}
+                onChange={handleChange}
+                id="registration_fee"
+                required
+              />
+            </label>
+            <label htmlFor="total_amount_payable" className="form-label">
+              {' '}
+              Total Amount Payable
 
-        <input
-          type="number"
-          name="duration"
-          placeholder="duration"
-          value={item.duration}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="number"
-          name="spa_session_fee"
-          placeholder="spa session fee"
-          value={item.spa_session_fee}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="number"
-          name="registration_fee"
-          placeholder="registration fee"
-          value={item.registration_fee}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="number"
-          name="total_amount_payable"
-          placeholder="total amount payable"
-          value={item.total_amount_payable}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="text"
-          name="image"
-          placeholder="item image"
-          value={item.image}
-          onChange={handleChange}
-          required
-        />
-
-        <button type="submit" onClick={handleSubmit}> Add Item  </button>
+              <input
+                className="form-input"
+                type="number"
+                name="total_amount_payable"
+                placeholder="total amount payable"
+                value={item.total_amount_payable}
+                onChange={handleChange}
+                id="total_amount_payable"
+                required
+              />
+            </label>
+            <label htmlFor="image" className="form-label">
+              {' '}
+              Item Image
+              <input
+                className="form-input"
+                type="text"
+                name="image"
+                placeholder="item image"
+                value={item.image}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <button type="submit" onClick={handleSubmit} className="form-btn">Add Session</button>
+          </fieldset>
+        </form>
       </div>
     );
   }
