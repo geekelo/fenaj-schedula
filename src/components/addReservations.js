@@ -81,7 +81,7 @@ function AddReservations() {
             <legend className="form-header">Reserve Spa Session</legend>
             <label htmlFor="city" className="form-label">
               {' '}
-              City
+              Add your city
               <input
                 className="form-input"
                 type="text"
