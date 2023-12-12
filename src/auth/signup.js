@@ -50,7 +50,7 @@ function Signup() {
     <div>
       <form onSubmit={handleSubmit} className="form">
         <fieldset className="fieldset">
-          <legend className="form-header">Registration goes here</legend>
+          <legend className="form-header">Sign Up</legend>
           <label htmlFor="username" className="form-label">
             {' '}
             Name
