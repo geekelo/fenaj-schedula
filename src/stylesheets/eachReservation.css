@@ -3,6 +3,7 @@
 }
 
 .reservation-main {
+  padding-top: 100px !important;
   background-color: #96bf01;
   padding: 30px;
   color: #fff;
