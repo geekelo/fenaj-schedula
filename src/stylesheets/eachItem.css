@@ -53,7 +53,8 @@
   background: #a0be3d;
 }
 
-.swiper-button-prev,  .swiper-button-next {
+.swiper-button-prev,
+.swiper-button-next {
   background: #a0be3d;
   padding: 30px 30px 30px 50px;
   color: #fff !important;
