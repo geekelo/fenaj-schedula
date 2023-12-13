@@ -117,4 +117,16 @@
     justify-content: space-between;
     padding-top: 0.5rem;
   }
+
+  .logomobilecont {
+    width: 80%;
+  }
+
+  .mobileIcons {
+    position: fixed;
+    right: 5%;
+    left: 80%;
+    top: 2%;
+    color: #fff;
+  }
 }
