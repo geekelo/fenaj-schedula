@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import { displayItems, deleteItem } from '../redux/displayItemSlice';
 import DeleteEachItem from './deleteEachItem';
+
+import '../stylesheets/eachItem.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 function DeleteItems() {
   const navigate = useNavigate();
@@ -49,14 +55,27 @@ function DeleteItems() {
 
   if (userLoggedin) {
     return (
-      <div>
-        {items.map((each) => (
-          <DeleteEachItem
-            key={each.id}
-            eachitem={each}
-            handleDelete={handleDelete}
-          />
-        ))}
+      <div className="eachItem">
+        <div className="item_slider">
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={30}
+            navigation
+            loop
+            modules={[Navigation]}
+            className="mySwiper"
+          >
+            {items.map((each) => (
+              <SwiperSlide key={each.id}>
+                <DeleteEachItem
+                  key={each.id}
+                  eachitem={each}
+                  handleDelete={handleDelete}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     );
   }
