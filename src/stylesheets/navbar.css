@@ -100,4 +100,21 @@
     background-color: #fff;
     height: 100%;
   }
+
+  .menuContainer.menu-open {
+    display: flex;
+  }
+
+  .menuItems {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile-menu-icon {
+    display: flex;
+    cursor: pointer;
+    height: 20vh;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+  }
 }
