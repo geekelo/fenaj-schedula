@@ -24,17 +24,44 @@
   text-transform: capitalize;
 }
 
+.item-content img {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .item-content .button {
-  background: #a0be3d;
+  border: 2px solid #a0be3d;
+  text-decoration: none;
+  color: #a0be3d;
+  background: #fff;
   padding: 10px 20px;
-  border: none;
-  color: #fff;
-  border-radius: 2px;
+  border-radius: 25px;
   cursor: pointer;
 }
 
 .item-content .button:hover {
-  border: 2px solid #a0be3d;
-  color: #a0be3d;
-  background: #fff;
+  border: none;
+  color: #fff;
+  background: #a0be3d;
+}
+
+.swiper-button-prev,  .swiper-button-next {
+  background: #a0be3d;
+  padding: 30px 30px 30px 50px;
+  color: #fff !important;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px !important;
+}
+
+.swiper-button-prev {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.swiper-button-next {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
