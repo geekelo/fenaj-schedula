@@ -29,8 +29,6 @@ function Navbar() {
     navigate('/signup');
   };
 
-  // Rest of your component...
-
   return (
     <div>
       <nav className="navbar">
