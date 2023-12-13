@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-// import React, { useState } from 'react';
-// import {
-//   FaFacebook,
-//   FaTwitter,
-//   FaInstagram,
-//   FaEnvelope,
+import React, { useState } from 'react';
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaEnvelope,
 } from 'react-icons/fa';
 import { useNavigate, NavLink } from 'react-router-dom';
 import '../stylesheets/navbar.css';
