@@ -62,6 +62,7 @@
 }
 
 .swiper-button-next {
+  position: absolute;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
