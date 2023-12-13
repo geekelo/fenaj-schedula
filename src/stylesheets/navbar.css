@@ -64,3 +64,7 @@
   background-color: #97bf0f;
   color: #fff;
 }
+
+.close-icon-open, .close-icon-close, .hamburger-icon-open, .hamburger-icon-close, .mobile-menu-icon {
+  display: none;
+}
