@@ -17,3 +17,23 @@
   width: 80%;
   font-family: 'Lato', sans-serif;
 }
+
+/* MOBILE ONLY */
+@media only screen and (max-width: 767px) {
+  .body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 20vh;
+  }
+
+  .navSection {
+    width: 100%;
+  }
+
+  .pageSection {
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+  }
+}

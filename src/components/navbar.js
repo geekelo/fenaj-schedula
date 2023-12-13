@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import {
   FaFacebook,
   FaTwitter,
@@ -10,22 +9,21 @@ import {
 import { useNavigate, NavLink } from 'react-router-dom';
 import '../stylesheets/navbar.css';
 import logo from '../assets/logo.png';
+import logomobile from '../assets/logomobile.png';
 
 function Navbar() {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const signout = async (e) => {
     e.preventDefault();
+    toggleMenu();
 
     // Clear local storage
-    try {
-      const response = await axios.delete('http://localhost:30001/logout', { withCredentials: true });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log('Logout error', error);
-    }
-
     localStorage.clear();
     // Navigate to the "/signup" route
     navigate('/signup');
@@ -36,29 +34,53 @@ function Navbar() {
   return (
     <div>
       <nav className="navbar">
-        <ul className="menuContainer">
+        <div
+          role="button"
+          tabIndex={0}
+          className="mobile-menu-icon"
+          onClick={toggleMenu}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              toggleMenu();
+            }
+          }}
+        >
+          <div className="logomobilecont"><img src={logomobile} alt="logo" className="logomobile" width="150px" /></div>
+          {!isMenuOpen ? (
+            <div className="mobileIcons">
+              <div role="button" tabIndex={0} className="hamburger-icon-open">&#9776;</div>
+              <div role="button" tabIndex={0} className="close-icon-close">&times;</div>
+            </div>
+          ) : (
+            <div className="mobileIcons">
+              <div role="button" tabIndex={0} className="hamburger-icon-close">&#9776;</div>
+              <div role="button" tabIndex={0} className="close-icon-open">&times;</div>
+            </div>
+          )}
+        </div>
+        <ul className={`menuContainer  ${isMenuOpen ? 'menu-open' : ''}`}>
           <img src={logo} alt="logo" className="logoImage" />
           <li className="menuItems">
-            <NavLink to="/home" className="menuLinks" activeClassName="active">Home</NavLink>
+            <NavLink to="/home" onClick={toggleMenu} className="menuLinks" activeClassName="active">Home</NavLink>
           </li>
           <li className="menuItems">
-            <NavLink to="/add-spa-session" className="menuLinks" activeClassName="active">Add Session</NavLink>
+            <NavLink to="/add-spa-session" onClick={toggleMenu} className="menuLinks" activeClassName="active">Add Session</NavLink>
           </li>
           <li className="menuItems">
-            <NavLink to="/my-reservations" className="menuLinks" activeClassName="active">Reservations</NavLink>
+            <NavLink to="/my-reservations" onClick={toggleMenu} className="menuLinks" activeClassName="active">Reservations</NavLink>
           </li>
           <li className="menuItems">
-            <NavLink to="/delete-spa-sessions" className="menuLinks" activeClassName="active">Delete Sessions</NavLink>
+            <NavLink to="/delete-spa-sessions" onClick={toggleMenu} className="menuLinks" activeClassName="active">Delete Sessions</NavLink>
           </li>
           <li className="menuItems">
-            <NavLink to="/login" className="menuLinks" activeClassName="active">Login</NavLink>
+            <NavLink to="/login" className="menuLinks" onClick={toggleMenu} activeClassName="active">Login</NavLink>
           </li>
           <li className="menuItems">
             <button type="submit" className="menuLinks" onClick={signout}>Sign Out</button>
           </li>
         </ul>
 
-        <div>
+        <div className="footer">
           <div className="iconsSection">
             <p><FaFacebook /></p>
             <p><FaTwitter /></p>

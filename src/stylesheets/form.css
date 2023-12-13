@@ -54,3 +54,15 @@
 .form-btn:hover {
   background-color: #424242;
 }
+
+/* Mobile Styles */
+@media only screen and (max-width: 767px) {
+  .form {
+    width: 90%;
+  }
+
+  .fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+}
