@@ -22,8 +22,20 @@ function Home() {
     <div className="eachItem">
       <div className="item_slider">
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
+          breakpoints={{
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 4,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 5,
+              spaceBetween: 50,
+            },
+          }}
           navigation
           loop
           modules={[Navigation]}
