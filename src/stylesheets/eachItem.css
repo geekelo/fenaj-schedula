@@ -24,6 +24,11 @@
 
 .item-content h4 {
   text-transform: capitalize;
+  font-size: 24px;
+}
+
+.item-content p {
+  color: #777;
 }
 
 .item-content img {
