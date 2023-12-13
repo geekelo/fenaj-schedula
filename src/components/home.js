@@ -5,9 +5,9 @@ import { Navigation } from 'swiper/modules';
 import { displayItems } from '../redux/displayItemSlice';
 import EachItem from './eachitem';
 
-import '../stylesheets/eachItem.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import '../stylesheets/eachItem.css';
 
 function Home() {
   const dispatch = useDispatch();
