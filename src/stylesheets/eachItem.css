@@ -57,12 +57,15 @@
 }
 
 .swiper-button-prev {
+  position: absolute;
+  left: 0;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
 }
 
 .swiper-button-next {
   position: absolute;
+  right: 0;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
