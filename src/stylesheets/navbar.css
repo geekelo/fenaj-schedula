@@ -54,3 +54,13 @@
   justify-content: center;
   gap: 5px;
 }
+
+.menuLinks:hover {
+  background-color: #424242;
+  color: #fff;
+}
+
+.active {
+  background-color: #97bf0f;
+  color: #fff;
+}
