@@ -22,6 +22,7 @@
   text-align: center;
   align-items: center;
   width: 100%;
+  height: 70%;
 }
 
 .logoImage {
@@ -34,7 +35,6 @@
   display: flex;
   justify-content: center;
   list-style: none;
-  height: 5vh;
   width: 100%;
 }
 
@@ -53,14 +53,4 @@
   display: flex;
   justify-content: center;
   gap: 5px;
-}
-
-.menuLinks:hover {
-  background-color: #424242;
-  color: #fff;
-}
-
-.active {
-  background-color: #97bf0f;
-  color: #fff;
 }
