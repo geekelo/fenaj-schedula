@@ -78,5 +78,26 @@
 
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
-  
+  .navbar {
+    position: fixed;
+    flex-direction: row;
+    background-color: #97bf0f;
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 10%;
+  }
+
+  .menuContainer {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    height: 100%;
+  }
 }
