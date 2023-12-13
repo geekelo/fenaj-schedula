@@ -6,9 +6,9 @@ import { Navigation } from 'swiper/modules';
 import { displayItems, deleteItem } from '../redux/displayItemSlice';
 import DeleteEachItem from './deleteEachItem';
 
-import '../stylesheets/eachItem.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import '../stylesheets/eachItem.css';
 
 function DeleteItems() {
   const navigate = useNavigate();
