@@ -11,9 +11,20 @@
 
 .navSection {
   width: 20%;
+  z-index: 2;
 }
 
 .pageSection {
   width: 80%;
   font-family: 'Lato', sans-serif;
+}
+
+@media only screen and (max-width: 767px) {
+  .navSection {
+    width: 0;
+  }
+
+  .pageSection {
+    width: 100%;
+  }
 }

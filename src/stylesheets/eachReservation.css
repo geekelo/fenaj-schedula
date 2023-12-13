@@ -3,8 +3,8 @@
 }
 
 .reservation-main {
+  padding: 100px 30px 60px 30px;
   background-color: #96bf01;
-  padding: 30px;
   color: #fff;
   font-size: 14px;
   min-height: 100vh;

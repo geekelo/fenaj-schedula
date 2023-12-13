@@ -36,6 +36,9 @@ The `Fenaj Schedula` project is a web application developed using the React Java
 
 To get a local copy up and running, follow these steps.
 
+
+As a student at Microvse, my responsibilities include diligent learning and application of microelectronics principles, conducting experiments in a controlled environment, and contributing actively to research projects aimed at advancing technological innovations in the field
+
 ### Prerequisites
 In order to run this project you need:
   * A basic understanding of React, Redux and Git
