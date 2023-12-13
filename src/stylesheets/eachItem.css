@@ -18,6 +18,8 @@
   flex-direction: column;
   gap: 10px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-content h4 {
@@ -37,6 +39,7 @@
   padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
+  width: 200px;
 }
 
 .item-content .button:hover {
