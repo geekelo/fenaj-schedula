@@ -73,8 +73,6 @@
   display: none;
 }
 
-/* ... Other styles ... */
-
 /* Mobile Styles */
 @media only screen and (max-width: 767px) {
   .navbar {
