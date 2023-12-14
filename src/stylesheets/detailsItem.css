@@ -6,17 +6,14 @@
 }
 
 .content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 30px;
 }
 
-.image-container {
-  margin-right: 20px;
-  background-color: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
+.image img {
+  border-radius: 10px;
+  width: 100%;
 }
 
 .text-container {
@@ -26,9 +23,14 @@
   align-items: flex-start;
 }
 
+.text-container div {
+  width: 100%;
+}
+
 .text-container p {
-  color: black;
-  font-size: 20px;
+  font-size: 14px;
+  text-align: end;
+  color: #444;
 }
 
 .text-container h1 {
@@ -42,6 +44,7 @@
   flex-direction: column;
   list-style: none;
   margin-top: 30px;
+  width: 100%;
 }
 
 .text-container ul li {
@@ -50,7 +53,6 @@
   display: flex;
   background-color: white;
   justify-content: space-between;
-  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 .text-container ul li:nth-child(odd) {
@@ -76,11 +78,13 @@
   color: #fff;
   border-radius: 30px;
   background-color: #97bf0f;
-  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
-.back-button a {
-  margin-left: 90px;
+@media only screen and (max-width: 767px) {
+  .content-container {
+    display: grid;
+    grid-template-columns: auto;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -93,19 +97,6 @@
     width: 100%;
   }
 
-  .content-container {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-
-  .image-container {
-    background-color: white;
-    padding: 30px 100px;
-    border-radius: 15px;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
-    margin-right: 70px;
-  }
-
   .image img {
     border-radius: 10px;
   }
@@ -115,15 +106,9 @@
     margin-top: 0;
   }
 
-  .text-container p {
-    color: black;
-    font-size: 20px;
-  }
-
   .text-container h1 {
     color: black;
     font-size: 25px;
-    text-align: end;
   }
 
   .text-container ul {
@@ -138,7 +123,6 @@
     display: flex;
     background-color: white;
     justify-content: space-between;
-    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.3);
   }
 
   .text-container ul li:nth-child(odd) {
@@ -159,7 +143,6 @@
     font-weight: bold;
     color: #fff;
     background-color: #97bf0f;
-    box-shadow: 2px 2px 15px 0 rgba(0, 0, 0, 0.3);
   }
 
   .reserve-button a {
@@ -168,7 +151,6 @@
   }
 
   .back-button a {
-    margin-left: 120px;
     border-top-right-radius: 70px;
     border-bottom-right-radius: 70px;
     border-top-left-radius: 0;

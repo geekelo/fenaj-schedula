@@ -28,7 +28,7 @@ function Signup() {
       navigate('/home');
     } else if (message === 'failed') {
       // Handle failed registration, e.g., display an error message
-      console.error('Registration failed');
+      // console.error('Registration failed');
     }
   }, [message]);
 
@@ -39,12 +39,7 @@ function Signup() {
       ...userInfo,
       [e.target.name]: e.target.value,
     });
-    console.log(userInfo);
   };
-
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
 
   return (
     <div>

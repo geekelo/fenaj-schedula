@@ -23,33 +23,30 @@ function DeleteItems() {
       const parsedData = JSON.parse(storedData);
 
       if (new Date().getTime() > parsedData.expirationTime) {
-        // Clear expired data, set userLoggedin to false, and navigate to login
         localStorage.clear();
         setuserLoggedin(false);
         navigate('/login');
       } else {
-        // The key 'userData' exists in local storage
         setuserLoggedin(true);
       }
     } else {
-      // No 'userData' found in local storage, navigate to login
       navigate('/login');
     }
   }, [navigate]);
 
   useEffect(() => {
-    // Call checkLoginStatus when the component mounts
     dispatch(displayItems());
-  }, [items]);
+  }, [dispatch]);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (userLoggedin) {
-      console.log(id);
       const storedData = localStorage.getItem('userData');
       const parsedData = JSON.parse(storedData);
-      // Call checkLoginStatus when the component mounts
       const { token } = parsedData.extractedUserData;
-      dispatch(deleteItem({ id, token }));
+      const ddd = await dispatch(deleteItem({ id, token }));
+      if (ddd) {
+        dispatch(displayItems());
+      }
     }
   };
 

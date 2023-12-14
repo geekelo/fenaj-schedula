@@ -34,6 +34,10 @@
 .item-content img {
   border-radius: 50%;
   overflow: hidden;
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/1;
 }
 
 .item-content .button {
@@ -77,4 +81,12 @@
   right: 0;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0.89;
+  cursor: auto;
+  background: #dcdcdc;
+  pointer-events: none;
 }

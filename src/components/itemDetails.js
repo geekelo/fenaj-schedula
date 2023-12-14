@@ -21,11 +21,10 @@ function ItemDetails() {
       <>
         <div className="container">
           <div className="content-container">
-            <div className="image-container">
-              <div className="image">
-                <img src={item.image} alt="spa_session" />
-              </div>
+            <div className="image">
+              <img src={item.image} alt="spa_session" />
             </div>
+
             <div className="text-container">
               <div>
                 <h1>{item.name}</h1>
@@ -78,7 +77,6 @@ function ItemDetails() {
                   Reserve Session
                 </NavLink>
               </div>
-
             </div>
           </div>
         </div>
@@ -86,7 +84,6 @@ function ItemDetails() {
         <div className="back-button">
           <NavLink to="/home">Back</NavLink>
         </div>
-
       </>
     );
   }

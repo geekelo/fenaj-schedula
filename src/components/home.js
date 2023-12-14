@@ -33,9 +33,7 @@ function Home() {
             },
           }}
           navigation
-          loop
           modules={[Navigation]}
-          className="mySwiper"
         >
           {items.map((each) => (
             <SwiperSlide key={each.id}>

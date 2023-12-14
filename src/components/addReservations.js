@@ -18,16 +18,13 @@ function AddReservations() {
       const parsedData = JSON.parse(storedData);
 
       if (new Date().getTime() > parsedData.expirationTime) {
-        // Clear expired data, set userLoggedin to false, and navigate to login
         localStorage.clear();
         setuserLoggedin(false);
         navigate('/login');
       } else {
-        // The key 'userData' exists in local storage
         setuserLoggedin(true);
       }
     } else {
-      // No 'userData' found in local storage, navigate to login
       navigate('/login');
     }
   }, [navigate]);
@@ -36,18 +33,16 @@ function AddReservations() {
     city: '',
     date: '',
     item_id: id,
-    user_id: 0, // Default value, will be updated in useEffect
+    user_id: 0,
   });
 
   const retrieveUserData = () => {
     const storedData = localStorage.getItem('userData');
     const parsedData = JSON.parse(storedData);
-    // The key 'userData' exists in local storage
     return parsedData.extractedUserData.id;
   };
 
   useEffect(() => {
-    // Update user_id in item when userLoggedin changes
     if (userLoggedin) {
       const userId = retrieveUserData();
       setReserveInfo((prevItem) => ({ ...prevItem, user_id: userId }));
@@ -58,11 +53,12 @@ function AddReservations() {
     e.preventDefault();
     const storedData = localStorage.getItem('userData');
     const parsedData = JSON.parse(storedData);
-    console.log(parsedData.extractedUserData.token);
-    await dispatch(addReservation({
-      reserveData: reserveInfo,
-      token: parsedData.extractedUserData.token,
-    }));
+    await dispatch(
+      addReservation({
+        reserveData: reserveInfo,
+        token: parsedData.extractedUserData.token,
+      }),
+    );
     navigate('/home');
   };
 
@@ -103,13 +99,15 @@ function AddReservations() {
                 placeholder="date"
                 value={reserveInfo.password}
                 onChange={handleChange}
-                required
+                min={new Date().toJSON().slice(0, 10).replace(/-/g, '-')}
+                required="required"
                 id="date"
               />
             </label>
-            <button type="submit" className="form-btn">Done</button>
+            <button type="submit" className="form-btn">
+              Done
+            </button>
           </fieldset>
-
         </form>
       </div>
     );

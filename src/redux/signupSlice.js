@@ -41,7 +41,6 @@ export const loginUser = createAsyncThunk(
 
       localStorage.setItem('userData', JSON.stringify(dataToStore));
 
-      console.log(data);
       return data; // You might want to adjust this based on your API response structure
     } catch (error) {
       throw new Error('Something went wrong with creating the user');
@@ -67,7 +66,6 @@ export const createUser = createAsyncThunk(
 
       const data = await response.json();
       localStorage.clear();
-      console.log(data);
       const loginData = {
         email: userData.email,
         password: userData.password,

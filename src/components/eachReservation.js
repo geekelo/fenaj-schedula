@@ -26,7 +26,7 @@ function EachReservation({ eachReservation, index, handleDelete }) {
         <div className="reservation-id col-lg-1">{ index + 1}</div>
         <div className="reservation-city col-lg-3">{ eachReservation.city }</div>
         <div className="reservation-date col-lg-2">{ eachReservation.date }</div>
-        <div className="reservation-name col-lg-3"><NavLink to={`/spa-session/${eachReservation.id}`}>{ item.name }</NavLink></div>
+        <div className="reservation-name col-lg-3"><NavLink to={`/spa-session/${eachReservation.item_id}`}>{ item.name }</NavLink></div>
         <div className="reservation-delete col-lg-3"><button type="submit" className="reservation-btn" onClick={(e) => triggerHandleDelete(e, eachReservation.id)}>Delete</button></div>
       </div>
     );
