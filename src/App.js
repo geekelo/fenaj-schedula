@@ -31,7 +31,7 @@ function App() {
 
     // Parse the JSON content
     const storedUserData = JSON.parse(userDataJSON);
-    console.log(storedUserData.extractedUserData);
+
     return storedUserData.extractedUserData || {};
   };
 

@@ -17,15 +17,17 @@ function ItemDetails() {
 
   if (items.length > 0) {
     const item = items.find((item) => item.id === parseInt(id, 10));
+    console.log(item);
+    console.log(items);
+    console.log(id);
     return (
       <>
         <div className="container">
           <div className="content-container">
-            <div className="image-container">
-              <div className="image">
-                <img src={item.image} alt="spa_session" />
-              </div>
+            <div className="image">
+              <img src={item.image} alt="spa_session" />
             </div>
+
             <div className="text-container">
               <div>
                 <h1>{item.name}</h1>
@@ -78,7 +80,6 @@ function ItemDetails() {
                   Reserve Session
                 </NavLink>
               </div>
-
             </div>
           </div>
         </div>
@@ -86,7 +87,6 @@ function ItemDetails() {
         <div className="back-button">
           <NavLink to="/home">Back</NavLink>
         </div>
-
       </>
     );
   }

@@ -39,23 +39,22 @@ function DisplayReservations() {
     if (userLoggedin) {
       const storedData = localStorage.getItem('userData');
       const parsedData = JSON.parse(storedData);
-      // Call checkLoginStatus when the component mounts
       if (parsedData) {
-        console.log(parsedData.extractedUserData.token);
         dispatch(displayReservations(parsedData.extractedUserData.token));
       }
     }
-  }, [userLoggedin, reservations]);
+  }, [dispatch, userLoggedin]);
 
   const handleDelete = (id) => {
     if (userLoggedin) {
-      console.log(id);
       const storedData = localStorage.getItem('userData');
       const parsedData = JSON.parse(storedData);
       // Call checkLoginStatus when the component mounts
       if (parsedData) {
         const { token } = parsedData.extractedUserData || 'undefined';
         dispatch(deleteReservation({ id, token }));
+
+        dispatch(displayReservations(token));
       }
     }
   };

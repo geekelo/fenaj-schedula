@@ -28,3 +28,8 @@
     width: 100%;
   }
 }
+
+.errorMessage {
+  color: red;
+  padding-bottom: 20px;
+}
