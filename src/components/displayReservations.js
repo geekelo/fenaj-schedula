@@ -45,7 +45,7 @@ function DisplayReservations() {
         dispatch(displayReservations(parsedData.extractedUserData.token));
       }
     }
-  }, [userLoggedin, reservations]);
+  }, [userLoggedin]);
 
   const handleDelete = (id) => {
     if (userLoggedin) {
