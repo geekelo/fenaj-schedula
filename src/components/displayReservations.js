@@ -78,16 +78,16 @@ function DisplayReservations() {
             <div className="reservation-name col-lg-3">SESSION</div>
             <div className="reservation-delete col-lg-3">ACTION</div>
           </div>
-          {
-            reservationList.map((each, index) => (
+          {[...reservationList]
+            .sort((a, b) => b.id - a.id)
+            .map((each, index) => (
               <EachReservation
                 key={each.id}
                 eachReservation={each}
                 index={index}
                 handleDelete={handleDelete}
               />
-            ))
-          }
+            ))}
         </div>
       </div>
     );
