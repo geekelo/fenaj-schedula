@@ -94,13 +94,20 @@
 
 @media only screen and (max-width: 767px) {
   .content-container {
-    display: grid;
-    grid-template-columns: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-container {
+    width: 90%;
   }
 
   .image img {
     border-radius: 10px;
-    margin-left: 10%;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
   }
 
   .reserve-button a {

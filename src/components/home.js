@@ -14,7 +14,7 @@ function Home() {
   const items = useSelector((state) => state.display_items.value);
 
   useEffect(() => {
-    // Call checkLoginStatus when the component mounts
+    // Loads spa session items
     dispatch(displayItems());
   }, [dispatch]);
 
