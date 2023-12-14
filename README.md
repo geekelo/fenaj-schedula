@@ -24,8 +24,12 @@ The `Fenaj Schedula` project is a web application developed using the React Java
 ## Backend Project:
   [Final-capstone-back-end](https://github.com/geekelo/fenaj-schedula_API)
 
-## Project Kanban board:
-  [Kanban-board](https://github.com/users/geekelo/projects/3)
+## Kanban Board:
+[Kanban-board](https://github.com/users/geekelo/projects/3)<br>
+[Initial board state](https://github.com/geekelo/fenaj-schedula_API/issues/25)
+
+## Team:
+We are a 5-member team.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
