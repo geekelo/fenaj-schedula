@@ -43,8 +43,8 @@ function DeleteItems() {
       const storedData = localStorage.getItem('userData');
       const parsedData = JSON.parse(storedData);
       const { token } = parsedData.extractedUserData;
-      const ddd = await dispatch(deleteItem({ id, token }));
-      if (ddd) {
+      const itemDeletes = await dispatch(deleteItem({ id, token }));
+      if (itemDeletes) {
         dispatch(displayItems());
       }
     }
