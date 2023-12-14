@@ -13,7 +13,10 @@
 
 .image img {
   border-radius: 10px;
-  width: 100%;
+  width: 70%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  margin: auto;
 }
 
 .text-container {
@@ -60,14 +63,20 @@
 }
 
 .apr-text {
+  display: flex;
+  flex-direction: column;
   font-size: 25px;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
+  justify-content: space-around;
+  align-items: center;
+  gap: 7px;
 }
 
 .reserve-button a {
-  margin: 10px 40px;
+  margin: auto;
+  font-size: 1rem;
 }
 
 .reserve-button a,
@@ -85,6 +94,23 @@
     display: grid;
     grid-template-columns: auto;
   }
+
+  .image img {
+    border-radius: 10px;
+    margin-left: 10%;
+  }
+
+  .reserve-button a {
+    margin: 10px auto;
+    border-radius: 30px;
+  }
+
+  .back-button a {
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 70px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -99,6 +125,7 @@
 
   .image img {
     border-radius: 10px;
+    margin-left: 10%;
   }
 
   .text-container {
@@ -145,8 +172,12 @@
     background-color: #97bf0f;
   }
 
+  .reserve-button {
+    margin: auto;
+  }
+
   .reserve-button a {
-    margin: 10px 60px;
+    margin: 10px auto;
     border-radius: 30px;
   }
 

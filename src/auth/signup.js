@@ -30,7 +30,7 @@ function Signup() {
       // Handle failed registration, e.g., display an error message
       // console.error('Registration failed');
     }
-  }, [message]);
+  }, [message, navigate]);
 
   const handleChange = (e) => {
     e.preventDefault();

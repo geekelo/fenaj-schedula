@@ -13,6 +13,7 @@
   font-family: 'Lato', sans-serif;
   font-weight: 600;
   color: #424242;
+  border-right: 1px solid #dcdcdc;
 }
 
 .menuContainer {
@@ -83,13 +84,14 @@
     top: 0;
     right: 0;
     height: 10%;
+    border: none;
   }
 
   .menuContainer {
     display: none;
     flex-direction: column;
     position: fixed;
-    top: 80px;
+    top: 10.2vh;
     left: 0;
     right: 0;
     background-color: #fff;
