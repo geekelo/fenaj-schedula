@@ -82,3 +82,11 @@
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+  opacity: 0.89;
+  cursor: auto;
+  background: #dcdcdc;
+  pointer-events: none;
+}
