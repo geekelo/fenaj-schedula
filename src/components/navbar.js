@@ -144,7 +144,7 @@ function Navbar() {
           ) : (
             <li className="menuItems">
               <button type="submit" className="menuLinks" onClick={signout}>
-                Sign Out
+                Log Out
               </button>
             </li>
           )}
