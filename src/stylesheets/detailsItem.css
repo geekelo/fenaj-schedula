@@ -62,7 +62,6 @@
 
 .text-container ul li:nth-child(odd) {
   background-color: #80808062;
-  padding-right: 4rem;
 }
 
 .apr-text {
