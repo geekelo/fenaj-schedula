@@ -36,7 +36,7 @@ export const deleteReservation = createAsyncThunk(
   'items/deleteItem',
   async (payload, dispatch) => {
     const { id, token } = payload;
-    console.log(payload);
+
     try {
       const response = await fetch(`http://localhost:30001/api/v1/reservations/${id}`, {
         method: 'DELETE',
