@@ -1,17 +1,18 @@
 <a name="readme-top"></a>
-  <img src="https://geekelo.com.ng/wp-content/uploads/2023/12/project-signature.gif" alt="signature" />
+  <img src="https://geekelo.com.ng/wp-content/uploads/2023/12/Brown-Black-Geometric-Personal-Branding-LinkedIn-Banner-1.png" alt="signature" >
 
 <div align="center">
   <h1>📖 Fenaj Schedula </h>
 </div>
-![image](https://github.com/geekelo/fenaj-schedula/assets/102464578/bb768090-1461-4f6d-87d0-81df7be22052)
+
 ## Fenaj Schedula
-The `Fenaj Schedula` project is a web application developed using the React JavaScript library. It serves as the frontend part of a web application and is responsible for providing a user interface and interacting with the backend to display data and user interactions.. 📚
+![image](https://github.com/geekelo/fenaj-schedula/assets/102464578/4fd88c53-2b06-4e38-bf44-ba67dccac881)
+
+**The `Fenaj Schedula` project is a web application developed using the React JavaScript library. It serves as the frontend part of a web application and is responsible for providing a user interface and interacting with the backend to display data and user interactions.. 📚**
+
 ## Demo Link:
  -  [Demo Link](https://fenaj-schedula.onrender.com/home)
  -  [Video Presentation](https://www.youtube.com/watch?v=VZJSGb8utxg)
-
-
 
 ## 🛠 Built With <a name="built-with"></a>
 
