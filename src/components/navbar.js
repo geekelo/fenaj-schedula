@@ -23,14 +23,10 @@ function Navbar() {
         // Clear expired data, set userLoggedin to false, and navigate to login
         localStorage.clear();
         setuserLoggedin(false);
-        navigate('/login');
       } else {
         // The key 'userData' exists in local storage
         setuserLoggedin(true);
       }
-    } else {
-      // No 'userData' found in local storage, navigate to login
-      navigate('/login');
     }
   }, [navigate]);
 
