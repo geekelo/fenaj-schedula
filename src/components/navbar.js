@@ -27,8 +27,6 @@ function Navbar() {
         // The key 'userData' exists in local storage
         setuserLoggedin(true);
       }
-    } else {
-      // No 'userData' found in local storage, navigate to login
     }
   }, [navigate]);
 
@@ -144,7 +142,7 @@ function Navbar() {
           ) : (
             <li className="menuItems">
               <button type="submit" className="menuLinks" onClick={signout}>
-                Sign Out
+                Log Out
               </button>
             </li>
           )}
