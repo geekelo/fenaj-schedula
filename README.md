@@ -1,10 +1,16 @@
 <a name="readme-top"></a>
+  <img src="https://geekelo.com.ng/wp-content/uploads/2023/12/project-signature.gif" alt="signature" width=""  height="auto" />
 
 <div align="center">
   <h1>📖 Fenaj Schedula </h>
 </div>
 
 The `Fenaj Schedula` project is a web application developed using the React JavaScript library. It serves as the frontend part of a web application and is responsible for providing a user interface and interacting with the backend to display data and user interactions.. 📚
+## Demo Link:
+  [Demo Link](https://fenaj-schedula.onrender.com/home)
+  [Video Presentation](https://www.youtube.com/watch?v=VZJSGb8utxg)
+![image](https://github.com/geekelo/fenaj-schedula/assets/102464578/bb768090-1461-4f6d-87d0-81df7be22052)
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -28,13 +34,8 @@ The `Fenaj Schedula` project is a web application developed using the React Java
 [Kanban-board](https://github.com/users/geekelo/projects/3)<br>
 [Initial board state](https://github.com/geekelo/fenaj-schedula_API/issues/25)
 
-## Team:
-We are a 5-member team.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Demo Link:
-  [Demo Link]()
 
 ## Getting Started
 
