@@ -10,7 +10,7 @@ const initialState = {
 
 export const displayItems = createAsyncThunk('user/display_items', async () => {
   try {
-    const response = await fetch('http://localhost:30001/api/v1/items', {
+    const response = await fetch('https://fenaj-schedula-api.onrender.com/api/v1/items', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const deleteItem = createAsyncThunk(
 
     try {
       const response = await fetch(
-        `http://localhost:30001/api/v1/items/${id}`,
+        `https://fenaj-schedula-api.onrender.com/api/v1/items/${id}`,
         {
           method: 'DELETE',
           headers: {

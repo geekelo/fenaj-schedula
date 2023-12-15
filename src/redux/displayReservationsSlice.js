@@ -12,7 +12,7 @@ export const displayReservations = createAsyncThunk(
   'user/display_reservations',
   async (token) => {
     try {
-      const response = await fetch('http://localhost:30001/api/v1/reservations', {
+      const response = await fetch('https://fenaj-schedula-api.onrender.com/api/v1/reservations', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export const deleteReservation = createAsyncThunk(
     const { id, token } = payload;
 
     try {
-      const response = await fetch(`http://localhost:30001/api/v1/reservations/${id}`, {
+      const response = await fetch(`https://fenaj-schedula-api.onrender.com/api/v1/reservations/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

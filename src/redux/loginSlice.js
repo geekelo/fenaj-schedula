@@ -12,7 +12,7 @@ export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (userData) => {
     try {
-      const response = await fetch('http://localhost:30001/api/v1/login', {
+      const response = await fetch('https://fenaj-schedula-api.onrender.com/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

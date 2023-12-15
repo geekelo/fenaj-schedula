@@ -11,7 +11,7 @@ export const loginUser = createAsyncThunk(
   'user/createUser',
   async (loginData) => {
     try {
-      const response = await fetch('http://localhost:30001/api/v1/login', {
+      const response = await fetch('https://fenaj-schedula-api.onrender.com/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export const createUser = createAsyncThunk(
   'user/createUser',
   async (userData, { dispatch }) => {
     try {
-      const response = await fetch('http://localhost:30001/api/v1/signup', {
+      const response = await fetch('https://fenaj-schedula-api.onrender.com/api/v1/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

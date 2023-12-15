@@ -12,7 +12,7 @@ export const addReservation = createAsyncThunk(
   async (payload) => {
     const { reserveData, token } = payload;
     try {
-      const response = await fetch('http://localhost:30001/api/v1/reservations', {
+      const response = await fetch('https://fenaj-schedula-api.onrender.com/api/v1/reservations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
