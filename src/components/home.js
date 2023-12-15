@@ -14,7 +14,7 @@ function Home() {
   const items = useSelector((state) => state.display_items.value);
 
   useEffect(() => {
-    // Call checkLoginStatus when the component mounts
+    // Loads spa session items
     dispatch(displayItems());
   }, [dispatch]);
 
@@ -35,11 +35,13 @@ function Home() {
           navigation
           modules={[Navigation]}
         >
-          {items.map((each) => (
-            <SwiperSlide key={each.id}>
-              <EachItem key={each.id} eachitem={each} />
-            </SwiperSlide>
-          ))}
+          {[...items] // Create a shallow copy of the items array
+            .sort((a, b) => b.id - a.id) // Sort items based on the 'id' in descending order
+            .map((each) => (
+              <SwiperSlide key={each.id}>
+                <EachItem key={each.id} eachitem={each} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>

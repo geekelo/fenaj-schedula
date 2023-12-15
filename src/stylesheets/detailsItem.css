@@ -3,17 +3,21 @@
   justify-content: center;
   margin-top: 30px;
   padding: 50px;
+  width: 100%;
 }
 
 .content-container {
-  display: grid;
-  grid-template-columns: 70% 30%;
-  gap: 30px;
+  display: flex;
+  gap: 70px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .image img {
   border-radius: 10px;
   width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
 }
 
 .text-container {
@@ -21,6 +25,7 @@
   flex-direction: column;
   margin-top: 30px;
   align-items: flex-start;
+  width: 40%;
 }
 
 .text-container div {
@@ -60,14 +65,20 @@
 }
 
 .apr-text {
+  display: flex;
+  flex-direction: column;
   font-size: 25px;
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
+  justify-content: space-around;
+  align-items: center;
+  gap: 7px;
 }
 
 .reserve-button a {
-  margin: 10px 40px;
+  margin: auto;
+  font-size: 1rem;
 }
 
 .reserve-button a,
@@ -82,8 +93,32 @@
 
 @media only screen and (max-width: 767px) {
   .content-container {
-    display: grid;
-    grid-template-columns: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-container {
+    width: 90%;
+  }
+
+  .image img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+  }
+
+  .reserve-button a {
+    margin: 10px auto;
+    border-radius: 30px;
+  }
+
+  .back-button a {
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 70px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 
@@ -99,6 +134,7 @@
 
   .image img {
     border-radius: 10px;
+    margin-left: 10%;
   }
 
   .text-container {
@@ -145,8 +181,12 @@
     background-color: #97bf0f;
   }
 
+  .reserve-button {
+    margin: auto;
+  }
+
   .reserve-button a {
-    margin: 10px 60px;
+    margin: 10px auto;
     border-radius: 30px;
   }
 

@@ -1,7 +1,7 @@
 // signup.js
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { createUser } from '../redux/signupSlice';
 import '../stylesheets/form.css';
 
@@ -30,7 +30,7 @@ function Signup() {
       // Handle failed registration, e.g., display an error message
       // console.error('Registration failed');
     }
-  }, [message]);
+  }, [message, navigate]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -103,6 +103,10 @@ function Signup() {
             />
           </label>
           <button type="submit" className="form-btn">Sign Up</button>
+          <div>
+            <span>Already a user? </span>
+            <NavLink to="/login">Login</NavLink>
+          </div>
         </fieldset>
       </form>
     </div>

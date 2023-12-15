@@ -44,7 +44,7 @@ function ItemDetails() {
                   </span>
                 </li>
                 <li className="list-item">
-                  <span>spa_session fee</span>
+                  <span>Spa session fee</span>
                   <span>
                     $
                     {item.spa_session_fee}
@@ -66,23 +66,23 @@ function ItemDetails() {
                 </li>
               </ul>
               <div className="apr-text">
-                <span>
+                <div>
                   <span className="font-extrabold">5.9% APR</span>
                   {' '}
                   Representative
-                </span>
-              </div>
-              <div className="reserve-button">
-                <NavLink to={`/reserve-spa-session/${item.id}`}>
-                  Reserve Session
-                </NavLink>
+                </div>
+                <div className="reserve-button">
+                  <NavLink to={`/reserve-spa-session/${item.id}`}>
+                    &#10149; Reserve Session
+                  </NavLink>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div className="back-button">
-          <NavLink to="/home">Back</NavLink>
+          <NavLink to="/home">&#5130;</NavLink>
         </div>
       </>
     );

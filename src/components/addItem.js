@@ -76,6 +76,8 @@ function AddItem() {
       setErrror('Registration fee is required');
     } else if (!item.total_amount_payable) {
       setErrror('Total amount payable is required');
+    } else if (!item.deposit) {
+      setErrror('Deposit payable is required');
     } else {
       const storedData = localStorage.getItem('userData');
       const parsedData = JSON.parse(storedData);
@@ -124,6 +126,20 @@ function AddItem() {
                 onChange={handleChange}
                 placeholder="Your description here..."
                 className="form-textarea"
+              />
+            </label>
+            <label htmlFor="deposit" className="form-label">
+              {' '}
+              Deposit
+              <input
+                className="form-input"
+                type="number"
+                name="deposit"
+                placeholder="deposit"
+                value={item.deposit}
+                onChange={handleChange}
+                id="deposit"
+                required
               />
             </label>
             <label htmlFor="duration" className="form-label">
