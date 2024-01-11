@@ -8,7 +8,8 @@
 ## Fenaj Schedula
 ![image](https://github.com/geekelo/fenaj-schedula/assets/102464578/4fd88c53-2b06-4e38-bf44-ba67dccac881)
 
-**The `Fenaj Schedula` project is a web application developed using the React JavaScript library. It serves as the frontend part of a web application and is responsible for providing a user interface and interacting with the backend to display data and user interactions.. 📚**
+**The `Fenaj Schedula` is a mobile-friendly and functional web application developed using the React JavaScript library. It is an appointment-booking app to enables users to book spa sessions.
+It comprises a Rails API-only backend application and a react app that provides the user interface for this project. With the help of its engaging and interactive user interface, users can create spa sessions and reserve any available spa session of their choice📚**
 
 ## Demo Link:
  -  [Demo Link](https://fenaj-schedula.onrender.com/home)
