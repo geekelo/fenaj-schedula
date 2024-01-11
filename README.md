@@ -69,30 +69,11 @@ To run the project, execute the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **Nasir Mahmood**
-
-- GitHub: [Nasirkhan294](https://github.com/Nasirkhan294)
-- LinkedIn: [nasirmahd](https://www.linkedin.com/in/nasirmahd/)
-
 👤 **Eloghene Otiede**
 
 - GitHub: [@geekelo](https://github.com/geekelo)
 - LinkedIn: [eloghene-otiede](https://www.linkedin.com/in/eloghene-otiede-b146a3232/)
   
-👤 **Fatima Najafi**
-
-- GitHub: [@fatima-najafi](https://github.com/fatima-najafi)
-- LinkedIn: [fatima-najafi](https://www.linkedin.com/in/fatima-najafi/)
-
-👤 **Joyce Cruz**
-
-- GitHub: [@balastar](https://github.com/balatstar)
-- LinkedIn: [joyce-ann-cruz](https://www.linkedin.com/in/joyce-ann-cruz-668a41a7/)
-
-👤 **Adeyemi Dada**
-
-- GitHub: [@yemidada](https://github.com/yemidada)
-- LinkedIn: [yemidada](https://www.linkedin.com/in/yemidada/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
